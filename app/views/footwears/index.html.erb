@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Footwears</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sku</th>
+      <th>Trademark</th>
+      <th>Category</th>
+      <th>Color</th>
+      <th>Stock</th>
+      <th>Stock warning</th>
+      <th>Wholesale price</th>
+      <th>Wholesale price</th>
+      <th>Retail price</th>
+      <th>Retail price</th>
+      <th>Gender</th>
+      <th>Active</th>
+      <th>Short description</th>
+      <th>Long description</th>
+      <th>Release date</th>
+      <th>Release country</th>
+      <th>Size</th>
+      <th>Weight</th>
+      <th>Season</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @footwears.each do |footwear| %>
+      <tr>
+        <td><%= footwear.sku %></td>
+        <td><%= footwear.trademark %></td>
+        <td><%= footwear.category %></td>
+        <td><%= footwear.color %></td>
+        <td><%= footwear.stock %></td>
+        <td><%= footwear.stock_warning %></td>
+        <td><%= footwear.wholesale_price %></td>
+        <td><%= footwear.wholesale_price %></td>
+        <td><%= footwear.retail_price %></td>
+        <td><%= footwear.retail_price %></td>
+        <td><%= footwear.gender %></td>
+        <td><%= footwear.active %></td>
+        <td><%= footwear.short_description %></td>
+        <td><%= footwear.long_description %></td>
+        <td><%= footwear.release_date %></td>
+        <td><%= footwear.release_country %></td>
+        <td><%= footwear.size %></td>
+        <td><%= footwear.weight %></td>
+        <td><%= footwear.season %></td>
+        <td><%= link_to 'Show', footwear %></td>
+        <td><%= link_to 'Edit', edit_footwear_path(footwear) %></td>
+        <td><%= link_to 'Destroy', footwear, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Footwear', new_footwear_path %>

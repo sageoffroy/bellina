@@ -1,0 +1,2 @@
+class ReleaseCountry < ApplicationRecord
+end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_sale: 2019-10-30
+  client: one
+  state: MyString
+
+two:
+  date_sale: 2019-10-30
+  client: two
+  state: MyString

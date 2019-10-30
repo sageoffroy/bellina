@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Way Pays</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>C1</th>
+      <th>C2</th>
+      <th>C3</th>
+      <th>C4</th>
+      <th>C5</th>
+      <th>C6</th>
+      <th>C7</th>
+      <th>C8</th>
+      <th>C9</th>
+      <th>C10</th>
+      <th>C11</th>
+      <th>C12</th>
+      <th>C13</th>
+      <th>C14</th>
+      <th>C15</th>
+      <th>C16</th>
+      <th>C17</th>
+      <th>C18</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @way_pays.each do |way_pay| %>
+      <tr>
+        <td><%= way_pay.name %></td>
+        <td><%= way_pay.c1 %></td>
+        <td><%= way_pay.c2 %></td>
+        <td><%= way_pay.c3 %></td>
+        <td><%= way_pay.c4 %></td>
+        <td><%= way_pay.c5 %></td>
+        <td><%= way_pay.c6 %></td>
+        <td><%= way_pay.c7 %></td>
+        <td><%= way_pay.c8 %></td>
+        <td><%= way_pay.c9 %></td>
+        <td><%= way_pay.c10 %></td>
+        <td><%= way_pay.c11 %></td>
+        <td><%= way_pay.c12 %></td>
+        <td><%= way_pay.c13 %></td>
+        <td><%= way_pay.c14 %></td>
+        <td><%= way_pay.c15 %></td>
+        <td><%= way_pay.c16 %></td>
+        <td><%= way_pay.c17 %></td>
+        <td><%= way_pay.c18 %></td>
+        <td><%= link_to 'Show', way_pay %></td>
+        <td><%= link_to 'Edit', edit_way_pay_path(way_pay) %></td>
+        <td><%= link_to 'Destroy', way_pay, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Way Pay', new_way_pay_path %>

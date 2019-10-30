@@ -1,0 +1,2 @@
+class WayPay < ApplicationRecord
+end

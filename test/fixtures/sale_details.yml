@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sale: one
+  footwear: one
+  count: 1
+  real_price: 
+  real_price: 
+
+two:
+  sale: two
+  footwear: two
+  count: 1
+  real_price: 
+  real_price: 

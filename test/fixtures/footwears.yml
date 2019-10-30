@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sku: MyString
+  trademark: one
+  category: one
+  color: one
+  stock: 1
+  stock_warning: 1
+  wholesale_price: 
+  wholesale_price: 
+  retail_price: 
+  retail_price: 
+  gender: MyString
+  active: false
+  short_description: MyString
+  long_description: MyString
+  release_date: 2019-10-30
+  release_country: one
+  size: one
+  weight: MyString
+  season: one
+
+two:
+  sku: MyString
+  trademark: two
+  category: two
+  color: two
+  stock: 1
+  stock_warning: 1
+  wholesale_price: 
+  wholesale_price: 
+  retail_price: 
+  retail_price: 
+  gender: MyString
+  active: false
+  short_description: MyString
+  long_description: MyString
+  release_date: 2019-10-30
+  release_country: two
+  size: two
+  weight: MyString
+  season: two

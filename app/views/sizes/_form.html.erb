@@ -1,0 +1,32 @@
+<%= form_with(model: size, local: true) do |form| %>
+  <% if size.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(size.errors.count, "error") %> prohibited this size from being saved:</h2>
+
+      <ul>
+      <% size.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :us %>
+    <%= form.text_field :us %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cms %>
+    <%= form.text_field :cms %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

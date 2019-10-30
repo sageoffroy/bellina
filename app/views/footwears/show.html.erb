@@ -1,0 +1,106 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sku:</strong>
+  <%= @footwear.sku %>
+</p>
+
+<p>
+  <strong>Trademark:</strong>
+  <%= @footwear.trademark %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @footwear.category %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @footwear.color %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @footwear.stock %>
+</p>
+
+<p>
+  <strong>Stock warning:</strong>
+  <%= @footwear.stock_warning %>
+</p>
+
+<p>
+  <strong>Wholesale price:</strong>
+  <%= @footwear.wholesale_price %>
+</p>
+
+<p>
+  <strong>Wholesale price:</strong>
+  <%= @footwear.wholesale_price %>
+</p>
+
+<p>
+  <strong>Retail price:</strong>
+  <%= @footwear.retail_price %>
+</p>
+
+<p>
+  <strong>Retail price:</strong>
+  <%= @footwear.retail_price %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @footwear.gender %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @footwear.active %>
+</p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @footwear.short_description %>
+</p>
+
+<p>
+  <strong>Long description:</strong>
+  <%= @footwear.long_description %>
+</p>
+
+<p>
+  <strong>Release date:</strong>
+  <%= @footwear.release_date %>
+</p>
+
+<p>
+  <strong>Release country:</strong>
+  <%= @footwear.release_country %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @footwear.size %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @footwear.weight %>
+</p>
+
+<p>
+  <strong>Season:</strong>
+  <%= @footwear.season %>
+</p>
+
+
+<p>
+  <strong>Avatar:</strong>
+  <%= image_tag url_for(@post.avatar) %>
+  <%= link_to @post.avatar.filename, rails_blob_path(@post.avatar, disposition: "attachment") %>
+</p>
+
+<%= link_to 'Edit', edit_footwear_path(@footwear) %> |
+<%= link_to 'Back', footwears_path %>
