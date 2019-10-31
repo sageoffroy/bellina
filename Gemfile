@@ -74,3 +74,6 @@ gem "select2-rails"
 gem 'jquery-datatables'
 gem 'ajax-datatables-rails'
 gem 'kaminari'
+
+#font-awesome
+gem "font-awesome-rails"
