@@ -1,30 +1,28 @@
-<p id="notice"><%= notice %></p>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Calzados</li>
 
-<h1>Footwears</h1>
+</ol>
 
-<table>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Calzados</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table>
   <thead>
     <tr>
       <th>Sku</th>
-      <th>Trademark</th>
-      <th>Category</th>
-      <th>Color</th>
-      <th>Stock</th>
-      <th>Stock warning</th>
-      <th>Wholesale price</th>
-      <th>Wholesale price</th>
-      <th>Retail price</th>
-      <th>Retail price</th>
-      <th>Gender</th>
-      <th>Active</th>
-      <th>Short description</th>
-      <th>Long description</th>
-      <th>Release date</th>
-      <th>Release country</th>
-      <th>Size</th>
-      <th>Weight</th>
-      <th>Season</th>
-      <th colspan="3"></th>
+      <th>Marca</th>
+      <th>Categoría</th>
+      <th>Inventario</th>
+      <th>Talle</th>
+      <th>Temporada</th>
+      <th>Opciones</th>
     </tr>
   </thead>
 
@@ -32,32 +30,23 @@
     <% @footwears.each do |footwear| %>
       <tr>
         <td><%= footwear.sku %></td>
-        <td><%= footwear.trademark %></td>
+        <td><span class="dot" style="background-color:<%= footwear.color.hex_code %>;width:15px;height: 15px;"></span> <%= footwear.trademark %></td>
         <td><%= footwear.category %></td>
-        <td><%= footwear.color %></td>
         <td><%= footwear.stock %></td>
-        <td><%= footwear.stock_warning %></td>
-        <td><%= footwear.wholesale_price %></td>
-        <td><%= footwear.wholesale_price %></td>
-        <td><%= footwear.retail_price %></td>
-        <td><%= footwear.retail_price %></td>
-        <td><%= footwear.gender %></td>
-        <td><%= footwear.active %></td>
-        <td><%= footwear.short_description %></td>
-        <td><%= footwear.long_description %></td>
-        <td><%= footwear.release_date %></td>
-        <td><%= footwear.release_country %></td>
         <td><%= footwear.size %></td>
-        <td><%= footwear.weight %></td>
         <td><%= footwear.season %></td>
-        <td><%= link_to 'Show', footwear %></td>
-        <td><%= link_to 'Edit', edit_footwear_path(footwear) %></td>
-        <td><%= link_to 'Destroy', footwear, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to((fa_icon "eye"), footwear) %>
+          <%= link_to((fa_icon "pencil"), edit_footwear_path(footwear)) %>
+          <%= link_to((fa_icon "trash-o"), footwear, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 
-<br>
-
-<%= link_to 'New Footwear', new_footwear_path %>
+<%= link_to 'Crear Calzado', new_footwear_path, class: 'btn btn-primary' %>

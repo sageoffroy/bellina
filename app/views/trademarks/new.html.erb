@@ -1,5 +1,21 @@
-<h1>New Trademark</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=providers_path%>">Marcas</a>
+  </li>
+  <li class="breadcrumb-item active">Crear Marca</li>
+</ol>
 
-<%= render 'form', trademark: @trademark %>
-
-<%= link_to 'Back', trademarks_path %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Crear Marca</div>
+    <div class="card-body">
+      <%= render 'form', trademark: @trademark %>
+      <div class="text-center">
+      	<%= link_to 'Volver', trademarks_path, class: "d-block small mt-3" %>
+      </div>
+    </div>
+  </div>
+</div>

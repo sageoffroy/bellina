@@ -1,115 +1,107 @@
-<%= form_with(model: footwear, local: true) do |form| %>
+<%= form_with(model: footwear, local: true, html: { class: "form-horizontal" }) do |form| %>
   <% if footwear.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(footwear.errors.count, "error") %> prohibited this footwear from being saved:</h2>
-
-      <ul>
+    <script type="text/javascript">
       <% footwear.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        toastr['error']('<%= message %>');
       <% end %>
-      </ul>
-    </div>
+    </script>
   <% end %>
 
-  <div class="field">
-    <%= form.label :sku %>
-    <%= form.text_field :sku %>
+  <div class="field row">
+    <%= form.label :sku, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.text_field :sku %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :trademark_id %>
-    <%= form.text_field :trademark_id %>
+  <div class="field row">
+    <%= form.label :trademark_id, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-10">
+      <%= form.collection_select :trademark_id, Trademark.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
+  <div class="field row">
+    <%= form.label :category_id, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= form.collection_select :category_id, Category.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
+    </div>
+    <%= form.label :color_id, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= form.collection_select :color_id, Color.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :color_id %>
-    <%= form.text_field :color_id %>
+  <div class="field row">
+    <%= form.label :size_id, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= form.collection_select :size_id, Size.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
+    </div>
+    <%= form.label :season_id, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= form.collection_select :season_id, Season.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :stock %>
-    <%= form.number_field :stock %>
+
+  <div class="field row">
+    <%= form.label :release_date, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= form.text_field :release_date, :class => "datepicker" %>
+    </div>
+    <%= form.label :release_country_id, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= form.collection_select :release_country_id, ReleaseCountry.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :stock_warning %>
-    <%= form.number_field :stock_warning %>
+  <hr>
+  <div class="field row">
+    <%= form.label :stock, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= form.number_field :stock, :placeholder => "0" %>
+    </div>
+    <%= form.label :stock_warning, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= form.number_field :stock_warning, :placeholder => "0" %>
+    </div>
+  </div>
+  <div class="field row">
+    <%= form.label :wholesale_price, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4 input-icon">
+      <%= form.number_field :wholesale_price, :placeholder => "0.00" %>
+      <i>$</i>
+    </div>
+    <%= form.label :retail_price, :class => "col-sm-2 col-form-label" %>
+    <div class="col-sm-4 input-icon">
+      <%= form.number_field :retail_price, :placeholder => "0.00" %>
+      <i>$</i>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :wholesale_price %>
-    <%= form.text_field :wholesale_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wholesale_price %>
-    <%= form.text_field :wholesale_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :retail_price %>
-    <%= form.text_field :retail_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :retail_price %>
-    <%= form.text_field :retail_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :gender %>
-    <%= form.text_field :gender %>
-  </div>
-
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
-
+  <hr>
+  
   <div class="field">
     <%= form.label :short_description %>
     <%= form.text_field :short_description %>
+    
   </div>
 
   <div class="field">
     <%= form.label :long_description %>
-    <%= form.text_field :long_description %>
+    <%= form.text_area :long_description %>
+  </div>
+
+
+  <div class="field">
+    <%= form.check_box :active, :checked=> "checked" %>
+    <span style="font-style: italic;font-size: 0.8rem;"> Si el producto no se encuentra disponible para la venta, quite el tílde de esta casilla</span>
   </div>
 
   <div class="field">
-    <%= form.label :release_date %>
-    <%= form.date_select :release_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :release_country_id %>
-    <%= form.text_field :release_country_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :size_id %>
-    <%= form.text_field :size_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :weight %>
-    <%= form.text_field :weight %>
-  </div>
-
-  <div class="field">
-    <%= form.label :season_id %>
-    <%= form.text_field :season_id %>
-  </div>
-  <div class="field">
-    <%= form.label :avatar %>
+    <%= form.label "Imagen" %>
     <%= form.file_field :avatar %>
   </div>
-
 
   <div class="actions">
     <%= form.submit %>

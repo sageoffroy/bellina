@@ -1,99 +1,86 @@
-<p id="notice"><%= notice %></p>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Bellina</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=sizes_path%>">Formas de pago</a>
+  </li>
+  <li class="breadcrumb-item active">Ver Forma de pago</li>
+</ol>
 
-<p>
-  <strong>Name:</strong>
-  <%= @way_pay.name %>
-</p>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header"><%= @way_pay.name %></div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <p>
+            <strong>C1:</strong>
+            <%= @way_pay.c1 %>
+          </p>
 
-<p>
-  <strong>C1:</strong>
-  <%= @way_pay.c1 %>
-</p>
+          <p>
+            <strong>C2:</strong>
+            <%= @way_pay.c2 %>
+          </p>
 
-<p>
-  <strong>C2:</strong>
-  <%= @way_pay.c2 %>
-</p>
+          <p>
+            <strong>C3:</strong>
+            <%= @way_pay.c3 %>
+          </p>
 
-<p>
-  <strong>C3:</strong>
-  <%= @way_pay.c3 %>
-</p>
+          <p>
+            <strong>C4:</strong>
+            <%= @way_pay.c4 %>
+          </p>
 
-<p>
-  <strong>C4:</strong>
-  <%= @way_pay.c4 %>
-</p>
+          <p>
+            <strong>C5:</strong>
+            <%= @way_pay.c5 %>
+          </p>
 
-<p>
-  <strong>C5:</strong>
-  <%= @way_pay.c5 %>
-</p>
+          <p>
+            <strong>C6:</strong>
+            <%= @way_pay.c6 %>
+          </p>
 
-<p>
-  <strong>C6:</strong>
-  <%= @way_pay.c6 %>
-</p>
+          </div>
+          <div class="col-sm-6">
+          <p>
+            <strong>C7:</strong>
+            <%= @way_pay.c7 %>
+          </p>
 
-<p>
-  <strong>C7:</strong>
-  <%= @way_pay.c7 %>
-</p>
+          <p>
+            <strong>C8:</strong>
+            <%= @way_pay.c8 %>
+          </p>
 
-<p>
-  <strong>C8:</strong>
-  <%= @way_pay.c8 %>
-</p>
+          <p>
+            <strong>C9:</strong>
+            <%= @way_pay.c9 %>
+          </p>
 
-<p>
-  <strong>C9:</strong>
-  <%= @way_pay.c9 %>
-</p>
+          <p>
+            <strong>C10:</strong>
+            <%= @way_pay.c10 %>
+          </p>
 
-<p>
-  <strong>C10:</strong>
-  <%= @way_pay.c10 %>
-</p>
+          <p>
+            <strong>C11:</strong>
+            <%= @way_pay.c11 %>
+          </p>
 
-<p>
-  <strong>C11:</strong>
-  <%= @way_pay.c11 %>
-</p>
-
-<p>
-  <strong>C12:</strong>
-  <%= @way_pay.c12 %>
-</p>
-
-<p>
-  <strong>C13:</strong>
-  <%= @way_pay.c13 %>
-</p>
-
-<p>
-  <strong>C14:</strong>
-  <%= @way_pay.c14 %>
-</p>
-
-<p>
-  <strong>C15:</strong>
-  <%= @way_pay.c15 %>
-</p>
-
-<p>
-  <strong>C16:</strong>
-  <%= @way_pay.c16 %>
-</p>
-
-<p>
-  <strong>C17:</strong>
-  <%= @way_pay.c17 %>
-</p>
-
-<p>
-  <strong>C18:</strong>
-  <%= @way_pay.c18 %>
-</p>
-
-<%= link_to 'Edit', edit_way_pay_path(@way_pay) %> |
-<%= link_to 'Back', way_pays_path %>
+          <p>
+            <strong>C12:</strong>
+            <%= @way_pay.c12 %>
+          </p>
+        </div>
+      </div>
+      <div class="text-center">
+        <%= link_to 'Editar', edit_way_pay_path(@way_pay), class: "btn btn-primary" %>
+        <%= link_to 'Volver', way_pays_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

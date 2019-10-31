@@ -1,29 +1,45 @@
-<p id="notice"><%= notice %></p>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=clients_path%>">Clientes</a>
+  </li>
+  <li class="breadcrumb-item active"><%= @client.fullname %></li>
+</ol>
 
-<p>
-  <strong>Dni:</strong>
-  <%= @client.dni %>
-</p>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header"><%= @client.fullname %></div>
+    <div class="card-body">
+      <p>
+        <strong>Dni:</strong>
+        <%= @client.dni %>
+      </p>
 
-<p>
-  <strong>Fullname:</strong>
-  <%= @client.fullname %>
-</p>
+      <p>
+        <strong>Fullname:</strong>
+        <%= @client.fullname %>
+      </p>
 
-<p>
-  <strong>Mail:</strong>
-  <%= @client.mail %>
-</p>
+      <p>
+        <strong>Mail:</strong>
+        <%= @client.mail %>
+      </p>
 
-<p>
-  <strong>Telephone:</strong>
-  <%= @client.telephone %>
-</p>
+      <p>
+        <strong>Telephone:</strong>
+        <%= @client.telephone %>
+      </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @client.address %>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+      <p>
+        <strong>Address:</strong>
+        <%= @client.address %>
+      </p>
+      <div class="text-center">
+        <%= link_to 'Editar', edit_client_path(@client), class: "btn btn-primary" %>
+        <%= link_to 'Volver', clients_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

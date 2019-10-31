@@ -1,6 +1,22 @@
-<h1>Editing Category</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=categories_path%>">Categorías</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Categoría</li>
+</ol>
 
-<%= render 'form', category: @category %>
-
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Editar Categoría</div>
+    <div class="card-body">
+      <%= render 'form', category: @category %>
+      <div class="text-center">
+      	<%= link_to 'Ver Proveedor', @category, class: "d-block small mt-3" %>
+        <%= link_to 'Volver', categories_path, class: "d-block small" %>
+      </div>
+    </div>
+  </div>
+</div>

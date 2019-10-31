@@ -65,3 +65,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-datepicker-rails'
+
+
+#Select 2
+gem "select2-rails"
+
+#Datatable
+gem 'jquery-datatables'
+gem 'ajax-datatables-rails'
+gem 'kaminari'

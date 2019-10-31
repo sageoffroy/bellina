@@ -1,6 +1,22 @@
-<h1>Editing Footwear</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=footwears_path%>">Calzados</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Calzado</li>
+</ol>
 
-<%= render 'form', footwear: @footwear %>
-
-<%= link_to 'Show', @footwear %> |
-<%= link_to 'Back', footwears_path %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5" style="max-width: 53rem;">
+    <div class="card-header">Editar Calzado</div>
+    <div class="card-body">
+      <%= render 'form', footwear: @footwear %>
+      <div class="text-center">
+      	<%= link_to 'Ver Calzado', @footwear, class: "d-block small mt-3" %>
+        <%= link_to 'Volver', footwears_path, class: "d-block small" %>
+      </div>
+    </div>
+  </div>
+</div>

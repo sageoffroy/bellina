@@ -1,63 +1,66 @@
-<p id="notice"><%= notice %></p>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Formas de Pago</li>
 
-<h1>Way Pays</h1>
+</ol>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>C1</th>
-      <th>C2</th>
-      <th>C3</th>
-      <th>C4</th>
-      <th>C5</th>
-      <th>C6</th>
-      <th>C7</th>
-      <th>C8</th>
-      <th>C9</th>
-      <th>C10</th>
-      <th>C11</th>
-      <th>C12</th>
-      <th>C13</th>
-      <th>C14</th>
-      <th>C15</th>
-      <th>C16</th>
-      <th>C17</th>
-      <th>C18</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Formas de pago</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th data-data="name">Nombre</th>
+            <th data-data="c1">C1</th>
+            <th data-data="c2">C2</th>
+            <th data-data="c3">C3</th>
+            <th data-data="c4">C4</th>
+            <th data-data="c5">C5</th>
+            <th data-data="c6">C6</th>
+            <th data-data="c7">C7</th>            
+            <th data-data="c8">C8</th>
+            <th data-data="c9">C9</th>
+            <th data-data="c10">C10</th>
+            <th data-data="c11">C11</th>
+            <th data-data="c12">C12</th>
+            <th> Opciones </th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @way_pays.each do |way_pay| %>
-      <tr>
-        <td><%= way_pay.name %></td>
-        <td><%= way_pay.c1 %></td>
-        <td><%= way_pay.c2 %></td>
-        <td><%= way_pay.c3 %></td>
-        <td><%= way_pay.c4 %></td>
-        <td><%= way_pay.c5 %></td>
-        <td><%= way_pay.c6 %></td>
-        <td><%= way_pay.c7 %></td>
-        <td><%= way_pay.c8 %></td>
-        <td><%= way_pay.c9 %></td>
-        <td><%= way_pay.c10 %></td>
-        <td><%= way_pay.c11 %></td>
-        <td><%= way_pay.c12 %></td>
-        <td><%= way_pay.c13 %></td>
-        <td><%= way_pay.c14 %></td>
-        <td><%= way_pay.c15 %></td>
-        <td><%= way_pay.c16 %></td>
-        <td><%= way_pay.c17 %></td>
-        <td><%= way_pay.c18 %></td>
-        <td><%= link_to 'Show', way_pay %></td>
-        <td><%= link_to 'Edit', edit_way_pay_path(way_pay) %></td>
-        <td><%= link_to 'Destroy', way_pay, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+        <% @way_pays.each do |way_pay| %>
+          <tr>
+            <td><%= way_pay.name %></td>
+            <td><%= way_pay.c1 %></td>
+            <td><%= way_pay.c2 %></td>
+            <td><%= way_pay.c3 %></td>
+            <td><%= way_pay.c4 %></td>
+            <td><%= way_pay.c5 %></td>
+            <td><%= way_pay.c6 %></td>
+            <td><%= way_pay.c7 %></td>
+            <td><%= way_pay.c8 %></td>
+            <td><%= way_pay.c9 %></td>
+            <td><%= way_pay.c10 %></td>
+            <td><%= way_pay.c11 %></td>
+            <td><%= way_pay.c12 %></td>
+            <td>
+              <%= link_to((fa_icon "eye"), way_pay) %>
+              <%= link_to((fa_icon "pencil"), edit_way_pay_path(way_pay)) %>
+              <%= link_to((fa_icon "trash-o"), way_pay, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 
-<br>
-
-<%= link_to 'New Way Pay', new_way_pay_path %>
+<%= link_to 'Crear Forma de Pago', new_way_pay_path, class: 'btn btn-primary' %>

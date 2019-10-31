@@ -1,29 +1,44 @@
-<p id="notice"><%= notice %></p>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Categorías</li>
 
-<h1>Categories</h1>
+</ol>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Categorías</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Código</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= category.code %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= category.name %></td>
+              <td><%= category.code %></td>
+              <td>
+                <%= link_to((fa_icon "eye"), category) %>
+                <%= link_to((fa_icon "pencil"), edit_category_path(category)) %>
+                <%= link_to((fa_icon "trash-o"), category, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 
-<br>
-
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'Crear Categoría', new_category_path, class: 'btn btn-primary' %>

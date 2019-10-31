@@ -1,14 +1,35 @@
-<p id="notice"><%= notice %></p>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=providers_path%>">Colores</a>
+  </li>
+  <li class="breadcrumb-item active"><%= @color.name %></li>
+</ol>
 
-<p>
-  <strong>Name:</strong>
-  <%= @color.name %>
-</p>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header"><%= @color.name %></div>
+    <div class="card-body">
+    	<p>
+		  <strong>Nombre:</strong>
+		  <%= @color.name %>
+		</p>
 
-<p>
-  <strong>Hex code:</strong>
-  <%= @color.hex_code %>
-</p>
+		<p>
+		  <strong>Muestra:</strong>
+		  <span class="dot" style="background-color:<%= @color.hex_code %>;">
+		</p>
 
-<%= link_to 'Edit', edit_color_path(@color) %> |
-<%= link_to 'Back', colors_path %>
+		<p>
+		  <strong>Código Hexadecimal:</strong>
+		  <%= @color.hex_code %>
+		</p>
+		<div class="text-center">
+			<%= link_to 'Editar', edit_color_path(@color), class: "btn btn-primary" %>
+			<%= link_to 'Volver', colors_path, class: "btn btn-primary" %>
+		</div>
+    </div>
+  </div>
+</div>

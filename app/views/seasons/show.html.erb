@@ -1,14 +1,30 @@
-<p id="notice"><%= notice %></p>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=seasons_path%>">Temporadas</a>
+  </li>
+  <li class="breadcrumb-item active"><%= @season.name %></li>
+</ol>
 
-<p>
-  <strong>Name:</strong>
-  <%= @season.name %>
-</p>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header"><%= @season.name %></div>
+    <div class="card-body">
+    	<p>
+		  <strong>Name:</strong>
+		  <%= @season.name %>
+		</p>
 
-<p>
-  <strong>Note:</strong>
-  <%= @season.note %>
-</p>
-
-<%= link_to 'Edit', edit_season_path(@season) %> |
-<%= link_to 'Back', seasons_path %>
+		<p>
+		  <strong>Note:</strong>
+		  <%= @season.note %>
+		</p>
+      <div class="text-center">
+      	<%= link_to 'Editar', edit_season_path(@season), class: "btn btn-primary" %>
+      	<%= link_to 'Volver', seasons_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

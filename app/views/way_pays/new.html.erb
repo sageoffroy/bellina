@@ -1,5 +1,21 @@
-<h1>New Way Pay</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Bellina</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=way_pays_path%>">Formas de pago</a>
+  </li>
+  <li class="breadcrumb-item active">Crear Forma de pago</li>
+</ol>
 
-<%= render 'form', way_pay: @way_pay %>
-
-<%= link_to 'Back', way_pays_path %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Crear forma de pago</div>
+    <div class="card-body">
+      <%= render 'form', way_pay: @way_pay %>
+      <div class="text-center">
+      	<%= link_to 'Volver', way_pays_path, class: "d-block small mt-3" %>
+      </div>
+    </div>
+  </div>
+</div>

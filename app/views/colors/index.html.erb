@@ -1,29 +1,46 @@
-<p id="notice"><%= notice %></p>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Colores</li>
 
-<h1>Colors</h1>
+</ol>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Hex code</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Colores</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Muestra</th>
+            <th>Código Hexadecimal</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @colors.each do |color| %>
-      <tr>
-        <td><%= color.name %></td>
-        <td><%= color.hex_code %></td>
-        <td><%= link_to 'Show', color %></td>
-        <td><%= link_to 'Edit', edit_color_path(color) %></td>
-        <td><%= link_to 'Destroy', color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @colors.each do |color| %>
+            <tr>
+              <td><%= color.name %></td>
+              <td><span class="dot" style="background-color:<%= color.hex_code %>;"></span></td>
+              <td><%= color.hex_code %></td>
+              <td>
+                <%= link_to((fa_icon "eye"), color) %>
+                <%= link_to((fa_icon "pencil"), edit_color_path(color)) %>
+                <%= link_to((fa_icon "trash-o"), color, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 
-<br>
-
-<%= link_to 'New Color', new_color_path %>
+<%= link_to 'Crear Color', new_color_path, class: 'btn btn-primary' %>

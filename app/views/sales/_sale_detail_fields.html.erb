@@ -1,0 +1,22 @@
+<div class="field nested-fields row">		
+	<div class="col-sm-2">
+		<%= f.label :count%>
+		<%= f.number_field :count %>
+		
+	</div>
+	<div class="col-sm-5">
+		<%= f.label :footwear_id %>
+		<%= f.collection_select :footwear_id, Footwear.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
+	</div>
+	<div class="col-sm-4">
+		<%= f.label :real_price%>
+		<div class="input-icon">
+	      <%= f.number_field :real_price, :placeholder => "0.00" %>
+	      <i>$</i>
+	    </div>
+	</div>
+	<div class="col-sm-1">
+		<%= f.label "n", :style=>"color:white;"%>
+		<%= link_to_remove_association (fa_icon "times"), f, class: "btn-block", style: "color: red;padding: 3px 0px;font-size: 1.3rem;" %>
+	</div>
+</div>

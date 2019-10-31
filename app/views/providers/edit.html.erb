@@ -1,6 +1,24 @@
-<h1>Editing Provider</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=providers_path%>">Proveedores</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Proveedor</li>
+</ol>
 
-<%= render 'form', provider: @provider %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Editar Proveedor</div>
+    <div class="card-body">
+      
+      <%= render 'form', provider: @provider %>
 
-<%= link_to 'Show', @provider %> |
-<%= link_to 'Back', providers_path %>
+      <div class="text-center">
+      	<%= link_to 'Ver Proveedor', @provider, class: "d-block small mt-3" %>
+        <%= link_to 'Volver', providers_path, class: "d-block small" %>
+      </div>
+    </div>
+  </div>
+</div>

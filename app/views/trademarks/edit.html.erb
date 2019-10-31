@@ -1,6 +1,22 @@
-<h1>Editing Trademark</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=trademarks_path%>">Marcas</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Marca</li>
+</ol>
 
-<%= render 'form', trademark: @trademark %>
-
-<%= link_to 'Show', @trademark %> |
-<%= link_to 'Back', trademarks_path %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Editar Marca</div>
+    <div class="card-body">
+      <%= render 'form', trademark: @trademark %>
+      <div class="text-center">
+      	<%= link_to 'Ver Marca', @trademark, class: "d-block small mt-3" %>
+        <%= link_to 'Volver', trademarks_path, class: "d-block small" %>
+      </div>
+    </div>
+  </div>
+</div>

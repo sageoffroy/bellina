@@ -1,29 +1,44 @@
-<p id="notice"><%= notice %></p>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Temporadas</li>
 
-<h1>Seasons</h1>
+</ol>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Note</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Temporadas</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Notas</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @seasons.each do |season| %>
-      <tr>
-        <td><%= season.name %></td>
-        <td><%= season.note %></td>
-        <td><%= link_to 'Show', season %></td>
-        <td><%= link_to 'Edit', edit_season_path(season) %></td>
-        <td><%= link_to 'Destroy', season, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @seasons.each do |season| %>
+            <tr>
+              <td><%= season.name %></td>
+              <td><%= season.note %></td>
+              <td>
+                <%= link_to((fa_icon "eye"), season) %>
+                <%= link_to((fa_icon "pencil"), edit_season_path(season)) %>
+                <%= link_to((fa_icon "trash-o"), season, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 
-<br>
-
-<%= link_to 'New Season', new_season_path %>
+<%= link_to 'Cargar Temporada', new_season_path, class: 'btn btn-primary' %>

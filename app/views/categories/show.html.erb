@@ -1,14 +1,30 @@
-<p id="notice"><%= notice %></p>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=categories_path%>">Categorías</a>
+  </li>
+  <li class="breadcrumb-item active"><%= @category.fullname %></li>
+</ol>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header"><%= @category.fullname %></div>
+    <div class="card-body">
+      <p>
+        <strong>Dni:</strong>
+        <%= @category.name %>
+      </p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @category.code %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+      <p>
+        <strong>Fullname:</strong>
+        <%= @category.code %>
+      </p>
+      <div class="text-center">
+        <%= link_to 'Editar', edit_category_path(@category), class: "btn btn-primary" %>
+        <%= link_to 'Volver', categories_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

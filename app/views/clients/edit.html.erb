@@ -1,6 +1,22 @@
-<h1>Editing Client</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=clients_path%>">Clientes</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Cliente</li>
+</ol>
 
-<%= render 'form', client: @client %>
-
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Editar Cliente</div>
+    <div class="card-body">
+      <%= render 'form', client: @client %>
+      <div class="text-center">
+      	<%= link_to 'Ver Client', @client, class: "d-block small mt-3" %>
+        <%= link_to 'Volver', clients_path, class: "d-block small" %>
+      </div>
+    </div>
+  </div>
+</div>

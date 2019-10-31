@@ -1,6 +1,22 @@
-<h1>Editing Season</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=seasons_path%>">Temporadas</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Temporada</li>
+</ol>
 
-<%= render 'form', season: @season %>
-
-<%= link_to 'Show', @season %> |
-<%= link_to 'Back', seasons_path %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Editar Temporada</div>
+    <div class="card-body">
+      <%= render 'form', season: @season %>
+      <div class="text-center">
+      	<%= link_to 'Ver Categoría', @season, class: "d-block small mt-3" %>
+        <%= link_to 'Volver', seasons_path, class: "d-block small" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,22 @@
-<h1>Editing Size</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=sizes_path%>">Talles</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Talle</li>
+</ol>
 
-<%= render 'form', size: @size %>
-
-<%= link_to 'Show', @size %> |
-<%= link_to 'Back', sizes_path %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Editar Talle</div>
+    <div class="card-body">
+      <%= render 'form', size: @size %>
+      <div class="text-center">
+      	<%= link_to 'Ver Talle', @size, class: "d-block small mt-3" %>
+        <%= link_to 'Volver', sizes_path, class: "d-block small" %>
+      </div>
+    </div>
+  </div>
+</div>

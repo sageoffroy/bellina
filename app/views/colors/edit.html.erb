@@ -1,6 +1,22 @@
-<h1>Editing Color</h1>
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=colors_path%>">Colores</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Color</li>
+</ol>
 
-<%= render 'form', color: @color %>
-
-<%= link_to 'Show', @color %> |
-<%= link_to 'Back', colors_path %>
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Editar Proveedor</div>
+    <div class="card-body">
+      <%= render 'form', color: @color %>
+      <div class="text-center">
+      	<%= link_to 'Ver Color', @color, class: "d-block small mt-3" %>
+        <%= link_to 'Volver', colors_path, class: "d-block small" %>
+      </div>
+    </div>
+  </div>
+</div>

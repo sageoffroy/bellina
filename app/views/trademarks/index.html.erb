@@ -1,31 +1,44 @@
-<p id="notice"><%= notice %></p>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Marcas</li>
 
-<h1>Trademarks</h1>
+</ol>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Provider</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Marcas</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Proveedor</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @trademarks.each do |trademark| %>
-      <tr>
-        <td><%= trademark.name %></td>
-        <td><%= trademark.description %></td>
-        <td><%= trademark.provider %></td>
-        <td><%= link_to 'Show', trademark %></td>
-        <td><%= link_to 'Edit', edit_trademark_path(trademark) %></td>
-        <td><%= link_to 'Destroy', trademark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @trademarks.each do |trademark| %>
+            <tr>
+              <td><%= trademark.name %></td>
+              <td><%= trademark.provider %></td>
+              <td>
+                <%= link_to((fa_icon "eye"), trademark) %>
+                <%= link_to((fa_icon "pencil"), edit_trademark_path(trademark)) %>
+                <%= link_to((fa_icon "trash-o"), trademark, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
 
-<br>
-
-<%= link_to 'New Trademark', new_trademark_path %>
+<%= link_to 'Crear Marca', new_trademark_path, class: 'btn btn-primary' %>
