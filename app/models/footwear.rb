@@ -10,6 +10,7 @@ class Footwear < ApplicationRecord
   validates_presence_of :stock_warning
   validates_presence_of :wholesale_price
 
+  has_one_attached :avatar
   
 
   def create_sku

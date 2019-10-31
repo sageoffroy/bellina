@@ -17,6 +17,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-datepicker
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require datatables
 //= require select2
 

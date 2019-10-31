@@ -26,8 +26,8 @@
           <% end %>
         </div>
         <div class="col-md-4">
-          <% if @fo.avatar.atacched? %>
-            <img src="url_for(@footwear.avatar)" class="img-fluid img-thumbnail" alt="San Fran" style="width:204px;height:auto;">  
+          <% if @footwear.avatar.attached? %>
+            <img src="<%=url_for(@footwear.avatar)%>" class="img-fluid img-thumbnail" alt="San Fran" style="width:204px;height:auto;"> 
           <% else %>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT47Iy_5Ta74Q-2vZ4YhSNbSUYDAFtCsP6ABoHkZBaU3kG9RBOA" class="img-fluid img-thumbnail" alt="San Fran" style="width:204px;height:auto;">
           <% end %>
