@@ -25,9 +25,14 @@ class FootwearsController < ApplicationController
   # POST /footwears.json
   def create
     @footwear = Footwear.new(footwear_params)
-
+    
+      
     respond_to do |format|
       if @footwear.save
+        if @footwear.sku.blank?
+          @footwear.create_sku()
+        end
+        @footwear.save
         format.html { redirect_to @footwear, notice: 'Footwear was successfully created.' }
         format.json { render :show, status: :created, location: @footwear }
       else
@@ -42,6 +47,10 @@ class FootwearsController < ApplicationController
   def update
     respond_to do |format|
       if @footwear.update(footwear_params)
+        if @footwear.sku.blank?
+          @footwear.create_sku()
+        end
+        @footwear.save
         format.html { redirect_to @footwear, notice: 'Footwear was successfully updated.' }
         format.json { render :show, status: :ok, location: @footwear }
       else
