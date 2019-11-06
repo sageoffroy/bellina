@@ -1,7 +1,7 @@
 $.fn.extend {
   integrateSelect2: (selector)->
     selector = selector || '.select2'
-    $(@).find(selector).select2({minimumResultsForSearch: Infinity})
+    $(@).find(selector).select2({theme: "bootstrap",width: '100%'})
                 
   integrateDatepicker: (selector)->
     selector = selector || '.datepicker'
