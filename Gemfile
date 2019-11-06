@@ -77,3 +77,8 @@ gem 'kaminari'
 
 #font-awesome
 gem "font-awesome-rails"
+
+#Mensajes de error
+gem 'toastr-rails'
+
+

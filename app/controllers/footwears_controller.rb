@@ -47,9 +47,7 @@ class FootwearsController < ApplicationController
   def update
     respond_to do |format|
       if @footwear.update(footwear_params)
-        if @footwear.sku.blank?
-          @footwear.create_sku()
-        end
+        @footwear.create_sku()
         @footwear.save
         format.html { redirect_to @footwear, notice: 'Footwear was successfully updated.' }
         format.json { render :show, status: :ok, location: @footwear }

@@ -1,7 +1,7 @@
 $.fn.extend {
   integrateSelect2: (selector)->
     selector = selector || '.select2'
-    $(@).find(selector).select2({theme: "bootstrap",width: '100%'})
+    $(@).find(selector).select2({minimumResultsForSearch: Infinity})
                 
   integrateDatepicker: (selector)->
     selector = selector || '.datepicker'
@@ -16,11 +16,12 @@ $.fn.extend {
 
 
 $(document).ready ->
-  $('table').dataTable()
+  $('.datatable').dataTable()
+
   
 
 $(document).on 'turbolinks:load', ->
-  datatable = $('table')
+  datatable = $('.datatable')
   datatable.DataTable
     'language': 'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json'
     'bPaginate': true
@@ -37,3 +38,7 @@ $(document).on 'turbolinks:before-cache', ->
     dataTable =  $($.fn.dataTable.tables(true)).DataTable()
     if (dataTable != null)
      dataTable.destroy();
+
+
+$(document).on 'turbolinks:load', ->
+  $('.footwears.new #footwear_release_country_id').val(11).trigger('change');

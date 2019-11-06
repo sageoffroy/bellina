@@ -13,37 +13,37 @@
     Calzados</div>
   <div class="card-body">
     <div class="table-responsive">
-      <table>
-  <thead>
-    <tr>
-      <th>Sku</th>
-      <th>Marca</th>
-      <th>Categoría</th>
-      <th>Inventario</th>
-      <th>Talle</th>
-      <th>Temporada</th>
-      <th>Opciones</th>
-    </tr>
-  </thead>
+      <table class="datatable">
+        <thead>
+          <tr>
+            <th>Sku</th>
+            <th>Marca</th>
+            <th>Categoría</th>
+            <th>Inventario</th>
+            <th>Talle</th>
+            <th>Temporada</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @footwears.each do |footwear| %>
-      <tr>
-        <td><%= footwear.sku %></td>
-        <td><span class="dot" style="background-color:<%= footwear.color.hex_code %>;width:15px;height: 15px;"></span> <%= footwear.trademark %></td>
-        <td><%= footwear.category %></td>
-        <td><%= footwear.stock %></td>
-        <td><%= footwear.size %></td>
-        <td><%= footwear.season %></td>
-        <td>
-          <%= link_to((fa_icon "eye"), footwear) %>
-          <%= link_to((fa_icon "pencil"), edit_footwear_path(footwear)) %>
-          <%= link_to((fa_icon "trash-o"), footwear, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @footwears.each do |footwear| %>
+            <tr>
+              <td><%= footwear.sku %></td>
+              <td><span class="dot" style="background-color:<%= footwear.color.hex_code %>;width:15px;height: 15px;"></span> <%= footwear.trademark %></td>
+              <td><%= footwear.category %></td>
+              <td><%= footwear.stock %></td>
+              <td><%= footwear.size %></td>
+              <td><%= footwear.season %></td>
+              <td>
+                <%= link_to((fa_icon "eye"), footwear) %>
+                <%= link_to((fa_icon "pencil"), edit_footwear_path(footwear)) %>
+                <%= link_to((fa_icon "trash-o"), footwear, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>

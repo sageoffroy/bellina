@@ -26,11 +26,13 @@
           <% end %>
         </div>
         <div class="col-md-4">
+          <div class="thumbnail">
           <% if @footwear.avatar.attached? %>
-            <img src="<%=url_for(@footwear.avatar)%>" class="img-fluid img-thumbnail" alt="San Fran" style="width:204px;height:auto;"> 
+            <img src="<%=url_for(@footwear.avatar)%>" class="" alt="San Fran" style="width:204px;height:auto;"> 
           <% else %>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT47Iy_5Ta74Q-2vZ4YhSNbSUYDAFtCsP6ABoHkZBaU3kG9RBOA" class="img-fluid img-thumbnail" alt="San Fran" style="width:204px;height:auto;">
           <% end %>
+          </div>
         </div>
         <div class="col-md-8">
           <p>
@@ -72,43 +74,42 @@
           <ul class="list-group">
             <li class="list-group-item">
               Precio de Lista
-              <span style="float:right;"><%= number_to_currency(@footwear.wholesale_price, :unit => "$") %></span>
+              <span style="float:right;"><%= number_to_currency(@footwear.wholesale_price) %></span>
             </li>
             <li class="list-group-item">
               Precio Contado
               <span style="float:right;">
                 <% if  @footwear.retail_price.nil? %>
-                  <%= number_to_currency(@footwear.wholesale_price * WayPay.first.c1 , :unit => "$") %>
+                  <%= number_to_currency(@footwear.wholesale_price * WayPay.first.c1) %>
                 <% else %>
-                  <%= number_to_currency(@footwear.retail_price, :unit => "$") %>
+                  <%= number_to_currency(@footwear.retail_price) %>
                 <% end %>
               </span>
             </li>
 
-              <% if !WayPay.where(name:"Visa/Mastercard").first.nil? %>
-                <li class="list-group-item">
-                  Precio Tarjeta Visa/Mastercard (3 cuotas)
-                  <span style="float:right;">
-                  3 cuotas de  <%= number_to_currency(@footwear.calculate_way_pay("Visa/Mastercard", 3) / 3 , :unit => "$")%>  (<%= number_to_currency(@footwear.calculate_way_pay("Visa/Mastercard", 3), :unit => "$") %>)
-                  </span>
-                </li>
-
-                <li class="list-group-item">
-                  Precio Tarjeta Visa/Mastercard (6 cuotas)
-                  <span style="float:right;">
-                    6 cuotas de <%= number_to_currency(@footwear.calculate_way_pay("Visa/Mastercard", 6) / 6 , :unit => "$")%>  (<%= number_to_currency(@footwear.calculate_way_pay("Visa/Mastercard", 6), :unit => "$") %>)
-                  </span>
-                </li>
-
-                <li class="list-group-item">
-                  Precio Tarjeta Visa/Mastercard (12 cuotas)
-                  <span style="float:right;">
-                    12 cuotas de <%= number_to_currency(@footwear.calculate_way_pay("Visa/Mastercard", 12) / 12 , :unit => "$")%>  (<%= number_to_currency(@footwear.calculate_way_pay("Visa/Mastercard", 12), :unit => "$") %>)
-                  </span>
-                </li>
-              <%end%>
-
-
+            <li class="list-group-item">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tajerta</th>
+                    <th scope="col">3 cuotas</th>
+                    <th scope="col">6 cuotas</th>
+                    <th scope="col">12 coutas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% WayPay.all.drop(1).each do |wp| %>
+                  <tr>
+                    <td><%=wp.name%></td>
+                    <td>
+                      <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3) / 3)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3),) %>)</td>
+                    <td><%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6) / 6)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6)) %>)</td>
+                    <td><%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12) / 12 )%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12)) %>)</td>
+                  </tr>
+                  <%end%>
+                </tbody>
+              </table>
+            </li>
           </ul>
         </div>
       </div>
@@ -127,3 +128,8 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  
+  $('#footwear_release_country_id').val(11).trigger('change');
+</script>
