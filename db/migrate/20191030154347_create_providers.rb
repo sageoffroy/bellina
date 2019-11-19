@@ -3,7 +3,7 @@ class CreateProviders < ActiveRecord::Migration[5.2]
     create_table :providers do |t|
       t.string :name
       t.string :note
-      t.integer :cuil
+      t.integer :cuil, :limit => 8
       t.string :telephone
       t.string :email
 
