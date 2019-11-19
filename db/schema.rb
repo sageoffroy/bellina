@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_154708) do
   end
 
   create_table "clients", force: :cascade do |t|
-    t.integer "dni"
+    t.integer "dni", limit: 8
     t.string "fullname"
     t.string "mail"
     t.string "telephone"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_154708) do
   create_table "providers", force: :cascade do |t|
     t.string "name"
     t.string "note"
-    t.integer "cuil"
+    t.integer "cuil", limit: 8
     t.string "telephone"
     t.string "email"
     t.datetime "created_at", null: false
