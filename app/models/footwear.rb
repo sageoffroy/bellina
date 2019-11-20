@@ -9,6 +9,11 @@ class Footwear < ApplicationRecord
   validates_presence_of :stock
   validates_presence_of :stock_warning
   validates_presence_of :wholesale_price
+  validates_presence_of :color_id
+  validates_presence_of :size_id
+  validates_presence_of :trademark
+  validates_presence_of :category
+
 
   has_one_attached :avatar
   

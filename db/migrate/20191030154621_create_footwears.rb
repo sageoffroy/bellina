@@ -14,6 +14,7 @@ class CreateFootwears < ActiveRecord::Migration[5.2]
       t.string :short_description
       t.string :long_description
       t.date :release_date
+      t.string :sex
       t.references :release_country, foreign_key: true
       t.references :size, foreign_key: true
       t.string :weight

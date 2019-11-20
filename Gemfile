@@ -87,4 +87,4 @@ gem "font-awesome-rails"
 #Mensajes de error
 gem 'toastr-rails'
 
-
+gem 'cocoon'

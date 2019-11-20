@@ -10,7 +10,11 @@ $.fn.extend {
       language: "es",
       orientation: "bottom auto",
       autoclose: true,
-      todayHighlight: true
+      todayHighlight: true,
+      todayBtn: "linked",
+      clearBtn: true
+
+
     })
 }
 
@@ -42,3 +46,6 @@ $(document).on 'turbolinks:before-cache', ->
 
 $(document).on 'turbolinks:load', ->
   $('.footwears.new #footwear_release_country_id').val(11).trigger('change');
+
+$(document).on 'cocoon:after-insert', (e) ->
+  $('.select2').select2({theme: "bootstrap",width: '100%'})

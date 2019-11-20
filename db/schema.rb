@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_154708) do
     t.string "short_description"
     t.string "long_description"
     t.date "release_date"
+    t.string "sex"
     t.integer "release_country_id"
     t.integer "size_id"
     t.string "weight"

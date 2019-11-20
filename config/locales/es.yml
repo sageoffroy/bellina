@@ -83,10 +83,10 @@ es:
         season: "Temporada"
         release_country_id: "Pais de Origen"
         release_country: "Pais de Origen"
-        release_date_id: "F. de Elaboración"
-        release_country: "Pais de Origen"
+        release_date: "F. de Elaboración"
         short_description: "Descripción Corta"
         long_description: "Descripción Larga"
+        sex: "Sexo"
 
       sale:
         client_id: "Cliente"
