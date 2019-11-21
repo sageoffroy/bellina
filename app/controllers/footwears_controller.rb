@@ -42,6 +42,16 @@ class FootwearsController < ApplicationController
     end
   end
 
+  # GET /get_footwear_value/1
+  def get_retail_price
+    id = params[:id]
+    retail_price = Footwear.where(id:id).first.get_retail_price
+    respond_to do |format|
+      format.json  { render :json => {:function => "get_retail_price", :retail_price => retail_price}}
+    end
+
+  end
+
   # PATCH/PUT /footwears/1
   # PATCH/PUT /footwears/1.json
   def update

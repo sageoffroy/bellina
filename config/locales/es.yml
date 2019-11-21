@@ -60,6 +60,7 @@ es:
       sale:
         date_sale: "F. de venta"
         client_id: "Cliente"
+        client: "Cliente"
         state: "Estado"
         
       sale_detail:
@@ -87,10 +88,6 @@ es:
         short_description: "Descripción Corta"
         long_description: "Descripción Larga"
         sex: "Sexo"
-
-      sale:
-        client_id: "Cliente"
-        date_sale: "Fecha"
 
       way_pay:
         name: "Nombre"

@@ -1,18 +1,17 @@
 <div class="field nested-fields row">
-		
 		<div class="col-sm-2">
 			<%= f.label :count%>
-			<%= f.number_field :count %>
+			<%= f.number_field :count, {class: "footwear_cant", min:0} %>
 			
 		</div>
 		<div class="col-sm-5">
 			<%= f.label :footwear_id %>
-			<%= f.collection_select :footwear_id, Footwear.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
+			<%= f.collection_select :footwear_id, Footwear.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field footwear_select"} %>
 		</div>
 		<div class="col-sm-4">
 			<%= f.label :real_price%>
 			<div class="input-icon">
-		      <%= f.number_field :real_price, :placeholder => "0.00" %>
+		      <%= f.text_field :real_price, :placeholder => "0.00", :class=>"footwear_value", :readonly => true %>
 		      <i>$</i>
 		    </div>
 		</div>

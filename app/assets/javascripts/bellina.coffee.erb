@@ -19,10 +19,50 @@ $.fn.extend {
 }
 
 
+
+set_events = ->
+  
+  $(':input').bind 'keyup mouseup', (e)->
+    event_target = $(e.currentTarget);
+    calc_value(event_target.parents('.field'))
+    
+
+  footwear_selects = $(".footwear_select")
+  footwear_selects.on 'select2:select', (e) ->
+    event_target = $(e.currentTarget);
+    calc_value(event_target.parents('.field'))
+    
+
+
+calc_value = (parent) ->
+
+  input_select = parent.find('.footwear_select') 
+  id = input_select.val();
+  input_value = parent.find('.footwear_value')
+  input_value.empty()
+  input_cant = parent.find('.footwear_cant')
+  
+  $.ajax
+      type: 'POST'
+      url: '/get_retail_price/'+id
+      error: (jqXHR, textStatus, errorThrown) ->
+        return
+      success: (data) ->
+        input_value.val(data.retail_price * input_cant.val())
+        sum = 0
+        $('.footwear_value').each ->
+          sum += parseFloat(@value)
+
+        if(isNaN(sum))
+          sum = 0;
+        $('#total').text(parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
+        return
+
+  
+
 $(document).ready ->
   $('.datatable').dataTable()
 
-  
 
 $(document).on 'turbolinks:load', ->
   datatable = $('.datatable')
@@ -49,3 +89,8 @@ $(document).on 'turbolinks:load', ->
 
 $(document).on 'cocoon:after-insert', (e) ->
   $('.select2').select2({theme: "bootstrap",width: '100%'})
+  set_events()
+
+
+
+
