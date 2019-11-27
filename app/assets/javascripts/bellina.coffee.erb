@@ -33,30 +33,36 @@ set_events = ->
     calc_value(event_target.parents('.field'))
     
 
+calc_total = ->
+  sum = 0
+  $('.footwear_value').each ->
+    sum += parseFloat(@value)
+
+  if(isNaN(sum))
+    sum = 0;
+  $('#total').text(parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
+  return
 
 calc_value = (parent) ->
-
   input_select = parent.find('.footwear_select') 
   id = input_select.val();
   input_value = parent.find('.footwear_value')
   input_value.empty()
   input_cant = parent.find('.footwear_cant')
   
-  $.ajax
-      type: 'POST'
-      url: '/get_retail_price/'+id
-      error: (jqXHR, textStatus, errorThrown) ->
-        return
-      success: (data) ->
-        input_value.val(data.retail_price * input_cant.val())
-        sum = 0
-        $('.footwear_value').each ->
-          sum += parseFloat(@value)
-
-        if(isNaN(sum))
-          sum = 0;
-        $('#total').text(parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
-        return
+  if !input_cant.val().length
+    input_cant.val(1)
+  
+  if id.length > 0
+    $.ajax
+        type: 'POST'
+        url: '/get_retail_price/'+id
+        error: (jqXHR, textStatus, errorThrown) ->
+          return
+        success: (data) ->
+          input_value.val(data.retail_price * input_cant.val())
+          calc_total()
+          return
 
   
 
@@ -86,11 +92,15 @@ $(document).on 'turbolinks:before-cache', ->
 
 $(document).on 'turbolinks:load', ->
   $('.footwears.new #footwear_release_country_id').val(11).trigger('change');
+  if ($('.sales.edit').length > 0)
+    calc_total()
 
 $(document).on 'cocoon:after-insert', (e) ->
   $('.select2').select2({theme: "bootstrap",width: '100%'})
   set_events()
 
 
-
+$(document).on 'cocoon:after-remove', (e) ->
+  if ($('.sales.new').length + $('.sales.edit').length > 0)
+    calc_total()
 
