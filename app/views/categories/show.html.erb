@@ -5,12 +5,12 @@
   <li class="breadcrumb-item">
     <a href="<%=categories_path%>">Categorías</a>
   </li>
-  <li class="breadcrumb-item active"><%= @category.fullname %></li>
+  <li class="breadcrumb-item active"><%= @category.name %></li>
 </ol>
 
 <div class="container">
   <div class="card card-register mx-auto mt-5">
-    <div class="card-header"><%= @category.fullname %></div>
+    <div class="card-header"><%= @category.name %></div>
     <div class="card-body">
       <p>
         <strong>Dni:</strong>

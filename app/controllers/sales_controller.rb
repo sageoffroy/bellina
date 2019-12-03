@@ -10,6 +10,8 @@ class SalesController < ApplicationController
   # GET /sales/1
   # GET /sales/1.json
   def show
+    @sale_details = SaleDetail.where(sale: @sale)
+
   end
 
   # GET /sales/new
@@ -21,11 +23,12 @@ class SalesController < ApplicationController
   def edit
   end
 
+
   # POST /sales
   # POST /sales.json
   def create
     @sale = Sale.new(sale_params)
-
+    @sale.state = "Iniciada"
     respond_to do |format|
       if @sale.save
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }

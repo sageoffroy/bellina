@@ -10,32 +10,44 @@
 
 <div class="container">
   <div class="card card-register mx-auto mt-5">
-    <div class="card-header"><%= @client.fullname %></div>
+    <div class="card-header"><h4><%= @client.fullname %></h4></div>
     <div class="card-body">
       <p>
         <strong>Dni:</strong>
         <%= @client.dni %>
       </p>
-
       <p>
-        <strong>Fullname:</strong>
-        <%= @client.fullname %>
-      </p>
-
-      <p>
-        <strong>Mail:</strong>
+        <strong>E-mail:</strong>
         <%= @client.mail %>
       </p>
 
       <p>
-        <strong>Telephone:</strong>
+        <strong>Teléfono:</strong>
         <%= @client.telephone %>
       </p>
 
       <p>
-        <strong>Address:</strong>
+        <strong>Dirección:</strong>
         <%= @client.address %>
       </p>
+
+      <hr>
+
+      <center><strong>Detalle de las últimas ventas hechas al cliente</strong></center>
+      
+      <% @sales_client.each do |sale| %>
+        <div class="bd-callout bd-callout-info">
+          <h5><%= sale.date_sale.strftime('%d-%m-%Y')%></h5>
+          <ul>
+            <% sale.sale_details.each do |sd| %>
+              <li><%=sd.footwear.short_description%></li>
+            <% end %>      
+          </ul>
+        </div>
+      <% end %>
+      
+
+
       <div class="text-center">
         <%= link_to 'Editar', edit_client_path(@client), class: "btn btn-primary" %>
         <%= link_to 'Volver', clients_path, class: "btn btn-primary" %>

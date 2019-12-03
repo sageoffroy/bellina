@@ -22,7 +22,6 @@
             <div class="alert alert-danger" role="alert">
               Quedan <strong><%=@footwear.stock%></strong> ejemplar<% if  @footwear.stock > 2 %>es<% end %> en el inventario, debería solictar más.
             </div>
-
           <% end %>
         </div>
         <div class="col-md-4">
@@ -71,6 +70,7 @@
 
 
         <div class="col-md-12">
+          <p><%=@footwear.short_description%></p>
           <br>  
 
           

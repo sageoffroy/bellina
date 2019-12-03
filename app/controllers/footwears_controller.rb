@@ -32,6 +32,10 @@ class FootwearsController < ApplicationController
         if @footwear.sku.blank?
           @footwear.create_sku()
         end
+
+        if @footwear.short_description.blank?
+          @footwear.short_description = @footwear.category.to_s + " " + @footwear.trademark.to_s + " " + @footwear.size.to_s + " " + @footwear.color.to_s
+        end
         @footwear.save
         format.html { redirect_to @footwear, notice: 'Footwear was successfully created.' }
         format.json { render :show, status: :created, location: @footwear }
@@ -58,6 +62,9 @@ class FootwearsController < ApplicationController
     respond_to do |format|
       if @footwear.update(footwear_params)
         @footwear.create_sku()
+        if @footwear.short_description.blank?
+          @footwear.short_description = @footwear.category.to_s + " " + @footwear.trademark.to_s + " " + @footwear.size.to_s + " " + @footwear.color.to_s
+        end
         @footwear.save
         format.html { redirect_to @footwear, notice: 'Footwear was successfully updated.' }
         format.json { render :show, status: :ok, location: @footwear }

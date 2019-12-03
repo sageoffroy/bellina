@@ -288,7 +288,7 @@ button,
   
   @extend .btn;
   @extend .btn-primary;
-  @extend .btn-block;
+  
 }
 
 button:not(:disabled),
@@ -2671,6 +2671,7 @@ textarea.form-control {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  min-width: 100px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -10995,4 +10996,56 @@ a .fa {
 .thumbnail img.portrait {
   width: 100%;
   height: auto;
+}
+
+/*Callout*/
+
+.bd-callout {
+  padding: 0.75rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #eee;
+  border-left-width: .25rem;
+  border-radius: .25rem
+}
+
+.bd-callout h5 {
+  margin-top: 0;
+  margin-bottom: .25rem
+}
+
+.bd-callout p:last-child {
+  margin-bottom: 0
+}
+
+.bd-callout code {
+  border-radius: .25rem
+}
+
+.bd-callout+.bd-callout {
+  margin-top: -.25rem
+}
+
+.bd-callout-info {
+  border-left-color: #5bc0de
+}
+
+.bd-callout-info h5 {
+  color: #5bc0de
+}
+
+.bd-callout-warning {
+  border-left-color: #f0ad4e
+}
+
+.bd-callout-warning h5 {
+  color: #f0ad4e
+}
+
+.bd-callout-danger {
+  border-left-color: #d9534f
+}
+
+.bd-callout-danger h5 {
+  color: #d9534f
 }

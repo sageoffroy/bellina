@@ -51,6 +51,12 @@ es:
       category:
         name: "Nombre"
         description: "Descripción"
+
+      client:
+        fulname: "Nombre"
+        mail: "E-mail"
+        telephone: "Teléfono"
+        Address: "Dirección"
       
       trademark:
         name: "Nombre"
