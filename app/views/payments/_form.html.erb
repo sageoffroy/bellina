@@ -1,0 +1,49 @@
+<%= form_with(model: payment, local: true) do |f| %>
+  <% if payment.errors.any? %>
+    <script type="text/javascript">
+      <% payment.errors.full_messages.each do |message| %>
+        toastr['error']('<%= message %>');
+      <% end %>
+    </script>
+  <% end %>
+
+  <div class="field row">
+    <div class="col-sm-4">
+      <%= f.label :payment_date%>
+      <%= f.text_field :payment_date, :class => "datepicker" %>
+    </div>
+    <div class="col-sm-6">
+      <%= f.label :client_id%>
+      <%= f.collection_select :client_id, Client.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field", id: "client_select"} %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label "n", :style=>"color:white;"%>
+      <%= link_to_add_association (fa_icon "plus"), f, :payment_details, data: { association_insertion_node: '.payment_details', association_insertion_method: :append }, class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="col-sm-12" style="margin-top:15px;font-weight: 600;">
+      <p>Deuda Total = $ <span id="deuda-total">0.00</span></p>
+    </div>
+    <hr>
+
+  </div>
+
+  
+  <div class="payment_details">
+    <%= f.fields_for :payment_details do |payment_details| %>
+        <%= render 'payment_detail_fields', :f => payment_details %>
+    <% end %>
+  </div>
+
+
+  <hr>
+  <div class="col-sm-12" style="text-align: right; font-weight: 600;">
+    <p>Total = $ <span id="total">0.00</span></p>
+  </div>
+  <div class="text-center col-md-12">
+    <%= f.submit %>
+  </div>
+
+ 
+ 
+<% end %>
+

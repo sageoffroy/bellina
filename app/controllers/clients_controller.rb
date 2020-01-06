@@ -22,6 +22,16 @@ class ClientsController < ApplicationController
   def edit
   end
 
+  # GET /get_footwear_value/1
+  def get_client_debt
+    id = params[:id]
+    debt = Client.where(id:id).first.get_debt
+    respond_to do |format|
+      format.json  { render :json => {:function => "get_client_price", :debt => debt}}
+    end
+  end
+
+
   # POST /clients
   # POST /clients.json
   def create

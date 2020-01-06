@@ -31,9 +31,13 @@
         <%= @client.address %>
       </p>
 
-      <hr>
+      
+      <% if @sales_client.count > 0 %>
+        <hr>
+        <center><strong>Detalle de las últimas ventas hechas al cliente</strong></center>
+      <% end %>
 
-      <center><strong>Detalle de las últimas ventas hechas al cliente</strong></center>
+      
       
       <% @sales_client.each do |sale| %>
         <div class="bd-callout bd-callout-info">

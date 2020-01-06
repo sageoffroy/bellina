@@ -61,6 +61,27 @@ class WayPaysController < ApplicationController
     end
   end
 
+  def get_way_pay_interest
+    id = params[:id]
+    fee = params[:fee]
+
+    case fee # a_variable is the variable we want to compare
+      when "1"
+        interest = WayPay.where(id:id).first.c1
+      when "3"
+        interest = WayPay.where(id:id).first.c3
+      when "6"
+        interest = WayPay.where(id:id).first.c6
+      when "12"
+        interest = WayPay.where(id:id).first.c12
+      end
+
+      respond_to do |format|
+        format.json  { render :json => {:function => "get_way_pay_interest", :interest => interest}}
+      end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_way_pay

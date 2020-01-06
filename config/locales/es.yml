@@ -110,7 +110,13 @@ es:
         c11: "índice 11 cuota"
         c12: "índice 12 cuota"
 
+      payment:
+        payment_date: Fecha de pago
+        client_id: Cliente
 
+      payment_detail:
+        way_pay_id: Método de pago 
+        amount: Monto
   date:
     abbr_day_names:
     - dom
@@ -297,12 +303,12 @@ es:
     currency:
       format:
         delimiter: "."
-        format: "%n %u"
+        format: "%u %n"
         precision: 2
         separator: ","
         significant: false
         strip_insignificant_zeros: false
-        unit: "€"
+        unit: "$"
     format:
       delimiter: "."
       precision: 3

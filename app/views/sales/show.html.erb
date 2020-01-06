@@ -31,11 +31,11 @@
 	          </tr>
 	        </thead>
 		      </tbody>
-			    <% @sale_details.each do |sale_details| %>
+			    <% @sale.sale_details.each do |sale_details| %>
 			      <tr>
 			      	<td><%= sale_details.count%></td>
-							<td><%= sale_details.footwear.short_description%></td>
-							<td><%= sale_details.real_price%></td>
+					<td><%= sale_details.footwear.short_description%></td>
+					<td><%= number_to_currency(sale_details.real_price)%></td>
 			      </tr>
 					<% end %>
 					</tbody>
@@ -44,7 +44,7 @@
   		</div>
 
 			<div class="col-sm-12" style="text-align: right; font-weight: 600;">
-		    <p>Total = $ <span><%=@sale_details.sum(:real_price)%></span></p>
+		    <p>Total = <span><%=number_to_currency(@sale_details.sum(:real_price))%></span></p>
   		</div>
   		<div class="text-center col-md-12">
   			<%= link_to 'Volver', sales_path, class: "btn btn-primary" %>

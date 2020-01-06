@@ -1,0 +1,44 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item active">Pagos</li>
+
+</ol>
+
+<div class="card mb-3">
+  <div class="card-header">
+    <i class="fa fa-table"></i>
+    Pagos</div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="datatable">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @payments.each do |payment| %>
+            <tr>
+                <td><%= payment.payment_date %></td>
+                <td><%= payment.client %></td>
+                <td>
+                  <%= link_to((fa_icon "eye"), payment) %>
+                  <%= link_to((fa_icon "pencil"), edit_payment_path(payment)) %>
+                  <%= link_to((fa_icon "money"), edit_payment_path(payment), {:style=>'color:green;'})  %>
+                  <%= link_to((fa_icon "trash-o"), payment, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
+                </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>
+
+<%= link_to 'Cargar nuevo Pago', new_payment_path, class: 'btn btn-primary' %>

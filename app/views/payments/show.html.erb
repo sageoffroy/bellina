@@ -1,0 +1,53 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=sales_path%>">Ventas</a>
+  </li>
+  <li class="breadcrumb-item active"><%= @payment.id %></li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">
+    	<div class="row">
+    		<div class="col-md-12">Pago Nº: <%= @payment.id %></div>	
+    	</div>
+	 	</div>
+    <div class="card-body row">
+    	<div class="col-md-6"> <strong> Fecha: </strong> <%= @payment.payment_date %></div>
+		 	<div class="col-md-6" style="text-align: right;"><strong>Cliente: </strong><%= @payment.client %></div>
+		 	<div class="col-md-12" style="margin-top: 25px;"></div>
+		 	<div class="col-md-12">
+		 		
+		 		<table class="table">
+		 			<thead>
+	          <tr>
+	            <th>Método de Pago</th>
+	            <th>Monto</th>
+	          </tr>
+	        </thead>
+		      </tbody>
+		      	<% @payment.payment_details.each do |payment_details| %>
+			      <tr>
+			      	<td><%= payment_details.way_pay%></td>
+					<td><%= number_to_currency(payment_details.amount)%></td>
+			      </tr>
+					<% end %>
+					</tbody>
+				</table>  
+				
+  		</div>
+
+			<div class="col-sm-12" style="text-align: right; font-weight: 600;">
+		    <p>Total = <span><%=number_to_currency(@payment.payment_details.sum(:amount))%></span></p>
+  		</div>
+  		<div class="text-center col-md-12">
+  			<%= link_to 'Volver', payments_path, class: "btn btn-primary" %>
+		  	<%= link_to 'Editar', edit_payment_path(@payment), class: "btn btn-primary" %>
+		  	<%= link_to 'Pagar', payments_path, class: "btn btn-success" %>
+		  </div>
+  	</div>
+	</div>
+</div>

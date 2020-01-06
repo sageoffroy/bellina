@@ -1,7 +1,11 @@
 $.fn.extend {
   integrateSelect2: (selector)->
     selector = selector || '.select2'
-    $(@).find(selector).select2({theme: "bootstrap",width: '100%'})
+    $(@).find(selector).select2({
+      theme: "bootstrap",
+      width: '100%',
+      allowClear: false
+    })
                 
   integrateDatepicker: (selector)->
     selector = selector || '.datepicker'
@@ -21,31 +25,53 @@ $.fn.extend {
 
 
 set_events = ->
-  
-  $(':input').bind 'keyup mouseup', (e)->
-    event_target = $(e.currentTarget);
-    calc_value(event_target.parents('.field'))
-    
 
-  footwear_selects = $(".footwear_select")
-  footwear_selects.on 'select2:select', (e) ->
-    event_target = $(e.currentTarget);
-    calc_value(event_target.parents('.field'))
+  if (($('.sales.edit').length  + $('.sales.new').length) > 0)
+
+    $('.footwear_cant').bind 'keyup mouseup', (e)->
+      event_target = $(e.currentTarget);
+      calc_value(event_target.parents('.field'))
+      
+
+    footwear_selects = $(".footwear_select")
+    footwear_selects.on 'select2:select', (e) ->
+      event_target = $(e.currentTarget);
+      calc_value(event_target.parents('.field'))
+
+  if ($('.payments.new').length > 0)
     
+    client_select = $("#client_select")
+    client_select.on 'select2:select', (e) ->
+      calc_debt(e)
+
+    way_pay_select = $(".way_pay_select")
+    way_pay_select.on 'select2:select', (e) ->
+      event_target = $(e.currentTarget);
+      calc_amount(event_target.parents('.field'))
+
+    fee_select = $(".fee_select")
+    fee_select.on 'select2:select', (e) ->
+      event_target = $(e.currentTarget);
+      calc_amount(event_target.parents('.field'))
+
+    amount_text_field = $(".amount_value")
+
+    amount_text_field.on 'input', (e) ->
+      event_target = $(e.currentTarget);
+      calc_amount(event_target.parents('.field'))
 
 calc_total = ->
   sum = 0
   $('.footwear_value').each ->
     sum += parseFloat(@value)
-
-  if(isNaN(sum))
-    sum = 0;
+    if(isNaN(sum))
+      sum = 0;
   $('#total').text(parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
-  return
+
 
 calc_value = (parent) ->
   input_select = parent.find('.footwear_select') 
-  id = input_select.val();
+  id = input_select.val()
   input_value = parent.find('.footwear_value')
   input_value.empty()
   input_cant = parent.find('.footwear_cant')
@@ -60,11 +86,69 @@ calc_value = (parent) ->
         error: (jqXHR, textStatus, errorThrown) ->
           return
         success: (data) ->
-          input_value.val(data.retail_price * input_cant.val())
+          input_value.val((data.retail_price * input_cant.val()).toFixed(2))
           calc_total()
-          return
+
+calc_amount = (parent) ->
+  way_pay_select = parent.find('.way_pay_select')
+  way_pay_id = way_pay_select.val()
+
+  fee_select = parent.find('.fee_select')
+  
+  #Habilitar cuotas si no es efectivo
+  if way_pay_id > 1
+    fee_select.prop('disabled', false)
+  else
+    fee_select.prop('disabled', true)
+    fee_select.val(1).trigger('change.select2')
 
   
+  amount = parent.find('.amount_value')
+  
+  real_amount = parent.find('.real_amount_value')
+
+  if way_pay_id > 1 and fee_select.val() > 1
+    $.ajax
+        type: 'POST'
+        url: '/get_way_pay_interest/'+way_pay_id+'/'+fee_select.val()
+        error: (jqXHR, textStatus, errorThrown) ->
+          return
+        success: (data) ->
+          real_amount.val((amount.val()*data.interest).toFixed(2))
+          sum = 0
+          $('.real_amount_value').each (index, value) ->
+            sum = sum + eval($(this).val())
+            if(isNaN(sum))
+              sum = 0;
+          
+          $('#total').text(parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
+  else
+    real_amount.val((amount.val()*1).toFixed(2))
+    sum = 0
+    $('.real_amount_value').each (index, value) ->
+      sum = sum + eval($(this).val())
+      if(isNaN(sum))
+        sum = 0;
+    $('#total').text(parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
+
+  
+  
+
+
+calc_debt = (target) ->
+  client = $('#client_select')
+  id = client.val()
+  if id.length > 0
+    $.ajax
+        type: 'POST'
+        url: '/get_client_debt/'+id
+        error: (jqXHR, textStatus, errorThrown) ->
+          return
+        success: (data) ->
+          $('#deuda-total').text(parseFloat(data.debt, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
+          
+  
+
 
 $(document).ready ->
   $('.datatable').dataTable()
@@ -82,6 +166,12 @@ $(document).on 'turbolinks:load', ->
     form = $('form')
     form.integrateSelect2()
     form.integrateDatepicker()
+
+  
+    set_events()
+
+  
+
 
 
 $(document).on 'turbolinks:before-cache', ->

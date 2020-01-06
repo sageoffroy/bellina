@@ -29,4 +29,8 @@ class WayPay < ApplicationRecord
 		  puts "it was something else"
 		end
 	end
+
+	def to_s
+		name
+	end	
 end

@@ -1,0 +1,21 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=payments_path%>">Pago</a>
+  </li>
+  <li class="breadcrumb-item active">Crear Pago</li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Crear Pago</div>
+    <div class="card-body">
+      <%= render 'form', payment: @payment %>
+      <div class="text-center">
+      	<%= link_to 'Volver', payments_path, class: "d-block small mt-3" %>
+      </div>
+    </div>
+  </div>
+</div>

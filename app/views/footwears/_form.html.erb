@@ -55,7 +55,7 @@
     </div>
     <%= form.label :release_country_id, :class => "col-sm-2 col-form-label" %>
     <div class="col-sm-4">
-      <%= form.collection_select :release_country_id, ReleaseCountry.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
+      <%= form.collection_select :release_country_id, ReleaseCountry.all, :id, :to_s, {}, {:class => "select2 select-field"} %>
     </div>
   </div>
 

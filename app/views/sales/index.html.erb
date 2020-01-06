@@ -18,6 +18,7 @@
             <th>Estado</th>
             <th>Fecha</th>
             <th>Cliente</th>
+            <th>Monto</th>
             <th>Opciones</th>
           </tr>
         </thead>
@@ -28,9 +29,11 @@
               <td><%= sale.state %></td>
                 <td><%= sale.date_sale %></td>
                 <td><%= sale.client %></td>
+                <td><%= number_to_currency(sale.get_amount) %></td>
                 <td>
                   <%= link_to((fa_icon "eye"), sale) %>
                   <%= link_to((fa_icon "pencil"), edit_sale_path(sale)) %>
+                  <%= link_to((fa_icon "money"), edit_sale_path(sale), {:style=>'color:green;'})  %>
                   <%= link_to((fa_icon "trash-o"), sale, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
                 </td>
             </tr>

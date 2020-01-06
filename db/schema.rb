@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_154708) do
+ActiveRecord::Schema.define(version: 2019_12_17_141444) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,26 @@ ActiveRecord::Schema.define(version: 2019_10_30_154708) do
     t.index ["season_id"], name: "index_footwears_on_season_id"
     t.index ["size_id"], name: "index_footwears_on_size_id"
     t.index ["trademark_id"], name: "index_footwears_on_trademark_id"
+  end
+
+  create_table "payment_details", force: :cascade do |t|
+    t.integer "payment_id"
+    t.integer "way_pay_id"
+    t.integer "fee"
+    t.decimal "amount", precision: 8, scale: 2
+    t.decimal "real_amount", precision: 8, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_id"], name: "index_payment_details_on_payment_id"
+    t.index ["way_pay_id"], name: "index_payment_details_on_way_pay_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.date "payment_date"
+    t.integer "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_payments_on_client_id"
   end
 
   create_table "providers", force: :cascade do |t|

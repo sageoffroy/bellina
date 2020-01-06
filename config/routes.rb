@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :payment_details
+  resources :payments
   get 'welcome/index'
   resources :footwears
   resources :sale_details
@@ -18,5 +20,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   post 'get_retail_price/:id' => 'footwears#get_retail_price'
+
+  post 'get_client_debt/:id' => 'clients#get_client_debt'
+
+  post 'get_way_pay_interest/:id/:fee' => 'way_pays#get_way_pay_interest'
 
 end

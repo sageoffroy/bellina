@@ -1,0 +1,22 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="/">Tablero</a>
+  </li>
+  <li class="breadcrumb-item">
+    <a href="<%=payments_path%>">Pagos</a>
+  </li>
+  <li class="breadcrumb-item active">Editar Pago</li>
+</ol>
+
+<div class="container">
+  <div class="card card-register mx-auto mt-5">
+    <div class="card-header">Editar Pago</div>
+    <div class="card-body">
+      <%= render 'form', payment: @payment %>
+      <div class="text-center">
+      	<%= link_to 'Ver Pago', @payment, class: "d-block small mt-3" %>
+        <%= link_to 'Volver', payments_path, class: "d-block small" %>
+      </div>
+    </div>
+  </div>
+</div>
