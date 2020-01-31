@@ -22,8 +22,8 @@
 		  <%= @season.note %>
 		</p>
       <div class="text-center">
-      	<%= link_to 'Editar', edit_season_path(@season), class: "btn btn-primary" %>
-      	<%= link_to 'Volver', seasons_path, class: "btn btn-primary" %>
+        <%= link_to 'Volver', :back, class: "btn btn-primary" %>
+      	<%= link_to 'Editar', edit_season_path(@season), class: "btn btn-primary" %>      	
       </div>
     </div>
   </div>
