@@ -325,6 +325,13 @@ input[type="text"] {
   @extend .form-control;
 }
 
+.pago {
+  color:green;
+}
+
+.compra {
+  color:red;
+}
 
 .active-true {
   color:green;
@@ -11052,4 +11059,14 @@ a .fa {
 
 .bd-callout-danger h5 {
   color: #d9534f
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
 }

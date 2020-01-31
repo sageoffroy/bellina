@@ -7,7 +7,7 @@ class Sale < ApplicationRecord
   validates_presence_of :date_sale
 
   def get_amount
-  	self.sale_details.sum(:real_price)
+  	self.sale_details.sum(:real_price).to_f
   end
 
 end

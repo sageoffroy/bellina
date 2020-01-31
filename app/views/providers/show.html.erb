@@ -27,8 +27,8 @@
       <%= @provider.email %>
     </p>
       <div class="text-center">
+        <%= link_to 'Volver', :back, class: "btn btn-primary" %>
         <%= link_to 'Editar', edit_provider_path(@provider), class: "btn btn-primary" %>
-        <%= link_to 'Volver', providers_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

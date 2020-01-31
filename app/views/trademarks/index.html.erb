@@ -26,7 +26,7 @@
           <% @trademarks.each do |trademark| %>
             <tr>
               <td><%= trademark.name %></td>
-              <td><%= trademark.provider %></td>
+              <td><a href="/providers/<%= trademark.provider.id %>"><%= trademark.provider %></a></td>
               <td>
                 <%= link_to((fa_icon "eye"), trademark) %>
                 <%= link_to((fa_icon "pencil"), edit_trademark_path(trademark)) %>
@@ -40,5 +40,5 @@
   </div>
   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
-
+<%= link_to 'Volver', :back, class: "btn btn-primary" %>
 <%= link_to 'Crear Marca', new_trademark_path, class: 'btn btn-primary' %>

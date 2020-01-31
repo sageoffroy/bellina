@@ -23,10 +23,11 @@
 
   <div class="field">
     <%= form.label :provider_id %>
-    <%= form.text_field :provider_id %>
+    <%= form.collection_select :provider_id, Provider.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field"} %>
   </div>
 
   <div class="actions">
+    <%= link_to 'Volver', :back, class: "btn btn-primary" %>
     <%= form.submit %>
   </div>
 <% end %>

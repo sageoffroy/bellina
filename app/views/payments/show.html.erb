@@ -17,7 +17,7 @@
 	 	</div>
     <div class="card-body row">
     	<div class="col-md-6"> <strong> Fecha: </strong> <%= @payment.payment_date %></div>
-		 	<div class="col-md-6" style="text-align: right;"><strong>Cliente: </strong><%= @payment.client %></div>
+		 	<div class="col-md-6" style="text-align: right;"><strong>Cliente: </strong><a href="/clients/<%= @payment.client.id%>"><%= @payment.client %></a></div>
 		 	<div class="col-md-12" style="margin-top: 25px;"></div>
 		 	<div class="col-md-12">
 		 		
@@ -44,7 +44,7 @@
 		    <p>Total = <span><%=number_to_currency(@payment.payment_details.sum(:amount))%></span></p>
   		</div>
   		<div class="text-center col-md-12">
-  			<%= link_to 'Volver', payments_path, class: "btn btn-primary" %>
+  			<%= link_to 'Volver', :back, class: "btn btn-primary" %>
 		  	<%= link_to 'Editar', edit_payment_path(@payment), class: "btn btn-primary" %>
 		  	<%= link_to 'Pagar', payments_path, class: "btn btn-success" %>
 		  </div>

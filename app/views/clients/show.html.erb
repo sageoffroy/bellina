@@ -32,22 +32,34 @@
       </p>
 
       
-      <% if @sales_client.count > 0 %>
+      <% if @movement.count > 0 %>
         <hr>
-        <center><strong>Detalle de las últimas ventas hechas al cliente</strong></center>
-      <% end %>
-
-      
-      
-      <% @sales_client.each do |sale| %>
-        <div class="bd-callout bd-callout-info">
-          <h5><%= sale.date_sale.strftime('%d-%m-%Y')%></h5>
-          <ul>
-            <% sale.sale_details.each do |sd| %>
-              <li><%=sd.footwear.short_description%></li>
-            <% end %>      
-          </ul>
-        </div>
+        <center><h4>Últimos movimientos</h4></center>
+        <center><strong>Monto actual: <%=number_to_currency(@client.get_debt)%></strong></center>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Monto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @movement.each_with_index do |m, i| %>
+              <% if m[0] === "pago" %>
+                <tr class="<%=m[0]%>" onclick="window.location='/payments/<%=m[1]%>';">
+              <% else %>
+                <tr class="<%=m[0]%>" onclick="window.location='/sales/<%=m[1]%>';">
+              <% end %>
+                  <th ><%=i+1%></th>
+                  <td><%=m[0]%></td>
+                  <td><%=m[2].strftime("%d/%m/%Y")%></td>
+                  <td><%=number_to_currency(m[3])%></td>
+                </tr>
+            <% end %>    
+          </tbody>
+        </table>
       <% end %>
       
 

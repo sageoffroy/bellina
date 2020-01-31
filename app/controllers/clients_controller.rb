@@ -10,7 +10,19 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @sales_client = Sale.where(client: @client)
+    sales_client = Sale.where(client: @client)
+    payments_client = Payment.where(client: @client)
+
+    @movement = []
+
+    sales_client.each do |sale|
+      @movement << ["compra", sale.id, sale.date_sale, sale.get_amount * -1]
+    end
+
+    payments_client.each do |payment|
+      @movement << ["pago", payment.id, payment.payment_date, payment.get_amount]
+    end
+
   end
 
   # GET /clients/new
