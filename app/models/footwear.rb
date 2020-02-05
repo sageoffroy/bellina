@@ -1,3 +1,7 @@
+require 'barby'
+require 'barby/barcode/ean_13'
+require 'barby/outputter/html_outputter'
+
 class Footwear < ApplicationRecord
   belongs_to :trademark
   belongs_to :category
@@ -17,10 +21,27 @@ class Footwear < ApplicationRecord
 
   has_one_attached :avatar
   
+  def get_select_description
+    "(" + self.get_ean13 + ") " + self.category.to_s + " " + self.trademark.to_s
+  end
 
   def create_sku
-  	self.sku = category.code + (sprintf '%07d', id)
+    sku = self.sku
+    calc = (((sku [1].to_i + sku[3].to_i + sku[5].to_i + sku[7].to_i + sku[9].to_i + sku[11].to_i) * 3) + (sku[0].to_i + sku[2].to_i + sku[4].to_i + sku[6].to_i + sku[8].to_i + sku[10].to_i)).digits.first
+    if calc > 0
+      verification_value = 10 - calc
+    else
+      verification_value = 0
+    end
+
+  	self.sku = '779000' + (sprintf '%06d', id) + verification_value.to_s
   end
+
+  
+  def get_barcode
+    Barby::HtmlOutputter.new(Barby::EAN13.new(self.sku[0..11]))
+  end
+
 
   def get_retail_price
   	wholesale_price * WayPay.first.c1	

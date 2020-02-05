@@ -4,11 +4,11 @@
 			<%= f.number_field :count, {class: "footwear_cant", min:0} %>
 			
 		</div>
-		<div class="col-sm-5">
+		<div class="col-sm-6">
 			<%= f.label :footwear_id %>
-			<%= f.collection_select :footwear_id, Footwear.all, :id, :to_s, {prompt: "Seleccionar"}, {class: "select2 select-field footwear_select"} %>
+			<%= f.collection_select :footwear_id, Footwear.all, :id, :get_select_description, {prompt: "Seleccionar"}, {class: "select2 select-field footwear_select"} %>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-3">
 			<%= f.label :real_price%>
 			<div class="input-icon">
 		      <%= f.text_field :real_price, :placeholder => "0.00", :class=>"footwear_value", :readonly => true %>

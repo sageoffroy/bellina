@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_12_17_141444) do
 
   create_table "footwears", force: :cascade do |t|
     t.string "sku"
+    t.string "ean13_code"
     t.integer "trademark_id"
     t.integer "category_id"
     t.integer "color_id"
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(version: 2019_12_17_141444) do
     t.string "note"
     t.integer "cuil", limit: 8
     t.string "telephone"
+    t.string "ean13_code"
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

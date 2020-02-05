@@ -52,10 +52,10 @@
               <% else %>
                 <tr class="<%=m[0]%>" onclick="window.location='/sales/<%=m[1]%>';">
               <% end %>
-                  <th ><%=i+1%></th>
-                  <td><%=m[0]%></td>
-                  <td><%=m[2].strftime("%d/%m/%Y")%></td>
-                  <td><%=number_to_currency(m[3])%></td>
+                  <td class="noselect"><%=i+1%></td>
+                  <td class="noselect"><%=m[0]%></td>
+                  <td class="noselect"><%=m[2].strftime("%d/%m/%Y")%></td>
+                  <td class="noselect"><%=number_to_currency(m[3])%></td>
                 </tr>
             <% end %>    
           </tbody>

@@ -1,4 +1,3 @@
-
 @import "bootstrap";
 @import "bootstrap-datepicker3";
 @import "select2";
@@ -11069,4 +11068,23 @@ a .fa {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
+}
+
+table.barby-barcode { 
+  max-width: 196px;
+  border-spacing: 0; 
+  margin: 10px 2px 0px;
+}
+
+tr.barby-row {}
+
+td.barby-cell 
+{ 
+  width: 1px;
+  height: 80px;
+  padding: 0px;
+}
+
+td.barby-cell.on {
+  background: #000;
 }

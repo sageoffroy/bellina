@@ -11,4 +11,8 @@ class Payment < ApplicationRecord
   	self.payment_details.sum(:amount)
   end
 
+  def get_real_amount
+  	self.payment_details.sum(:real_amount)
+  end
+
 end

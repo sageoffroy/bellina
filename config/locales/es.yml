@@ -262,6 +262,10 @@ es:
         create: Crear Proveedor
         submit: Guardar Proveedor
         update: Actualizar Proveedor
+      client:
+        create: Crear Cliente
+        submit: Guardar Cliente
+        update: Actualizar Cliente
       trademark:
         create: Crear Marca
         submit: Guardar Marca

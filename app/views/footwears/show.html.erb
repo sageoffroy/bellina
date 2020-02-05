@@ -32,6 +32,12 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT47Iy_5Ta74Q-2vZ4YhSNbSUYDAFtCsP6ABoHkZBaU3kG9RBOA" class="img-fluid img-thumbnail" alt="San Fran" style="width:204px;height:auto;">
           <% end %>
           </div>
+          <%= raw @footwear.get_barcode.to_html %>
+          
+          <div style="max-width: 200px;text-align: center;">
+            <%= @footwear.sku %>
+          </div>
+
         </div>
         <div class="col-md-8">
           <p>
@@ -70,8 +76,8 @@
 
 
         <div class="col-md-12">
-          <p><%=@footwear.short_description%></p>
-          <br>  
+          <br>
+          <p><strong>Descripción Corta: </strong><%=@footwear.short_description%></p>
 
           
 
@@ -117,7 +123,6 @@
           </ul>
         </div>
       </div>
-      <hr>
 
       <% if !@footwear.long_description.nil? %>
         <p style="font-style: italic"><%=@footwear.long_description%></p>
@@ -125,8 +130,9 @@
       <%end%>
 
 
+
       <div class="text-center">
-        <%= link_to 'Volver', colors_path, class: "btn btn-primary" %>
+        <%= link_to 'Volver', :back, class: "btn btn-primary" %>
         <%= link_to 'Editar', edit_footwear_path(@footwear), class: "btn btn-primary" %>
       </div>
     </div>

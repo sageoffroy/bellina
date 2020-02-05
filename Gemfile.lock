@@ -51,6 +51,7 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.7.0)
       execjs
+    barby (0.6.8)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
@@ -240,6 +241,7 @@ PLATFORMS
 
 DEPENDENCIES
   ajax-datatables-rails
+  barby
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)
   bootstrap-datepicker-rails

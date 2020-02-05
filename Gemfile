@@ -88,3 +88,5 @@ gem "font-awesome-rails"
 gem 'toastr-rails'
 
 gem 'cocoon'
+
+gem 'barby'
