@@ -187,3 +187,8 @@ size_list.each do |number|
 end
 
 
+user = User.new
+user.email = 'sageoffroy@gmail.com'
+user.password = 'quitar123'
+user.save!
+user.add_role 'admin'
