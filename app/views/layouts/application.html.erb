@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
   </head>
 
   <body id="page-top" class="<%= controller_name %> <%= action_name %>">
@@ -20,10 +21,13 @@
     <% end %>
     <%= render "layouts/navbar"%>
     <div id="wrapper">
-      <%= render "layouts/sidebar"%>
+      <% if user_signed_in? %>
+        <%= render "layouts/sidebar"%>
+      <% end %>  
       <div class="container-fluid">
         <%= yield %>  
       </div>
     </div>
   </body>
 </html>
+

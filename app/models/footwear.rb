@@ -22,7 +22,7 @@ class Footwear < ApplicationRecord
   has_one_attached :avatar
   
   def get_select_description
-    "(" + self.get_ean13 + ") " + self.category.to_s + " " + self.trademark.to_s
+    "(" + self.sku + ") " + self.category.to_s + " " + self.trademark.to_s
   end
 
   def create_sku

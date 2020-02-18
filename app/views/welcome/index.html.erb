@@ -3,7 +3,6 @@
     <li class="breadcrumb-item">
       <a href="#">Tablero</a>
     </li>
-    
   </ol>
 
   <!-- Icon Cards-->
@@ -73,4 +72,15 @@
       </div>
     </div>
     
+  </div>
+
+  <!-- Area Chart Example-->
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fas fa-chart-area"></i>
+      Ventas del año por mes</div>
+    <div class="card-body">
+      <%= line_chart @data, @options%>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   </div>

@@ -22,6 +22,20 @@ $.fn.extend {
     })
 }
 
+###
+# Number.prototype.format(n, x, s, c)
+# 
+# @param integer n: length of decimal
+# @param integer x: length of whole part
+# @param mixed   s: sections delimiter
+# @param mixed   c: decimal delimiter
+###
+
+Number::format = (n, x, s, c) ->
+  re = '\\d(?=(\\d{' + (x or 3) + '})+' + (if n > 0 then '\\D' else '$') + ')'
+  num = @toFixed(Math.max(0, ~ ~n))
+  (if c then num.replace('.', c) else num).replace new RegExp(re, 'g'), '$&' + (s or ',')
+
 
 
 set_events = ->
@@ -66,7 +80,7 @@ calc_total = ->
     sum += parseFloat(@value)
     if(isNaN(sum))
       sum = 0;
-  $('#total').text(parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
+  $('#total').text(sum.format(2, 3, '.', ','));
 
 
 calc_value = (parent) ->
@@ -107,6 +121,8 @@ calc_amount = (parent) ->
   
   real_amount = parent.find('.real_amount_value')
 
+  amount_x_fee = parent.find('.amount_x_fee_value')
+
   if way_pay_id > 1 and fee_select.val() > 1
     $.ajax
         type: 'POST'
@@ -115,21 +131,24 @@ calc_amount = (parent) ->
           return
         success: (data) ->
           real_amount.val((amount.val()*data.interest).toFixed(2))
+          amount_x_fee.val(((amount.val()*data.interest)/fee_select.val()).toFixed(2))
+
           sum = 0
           $('.real_amount_value').each (index, value) ->
             sum = sum + eval($(this).val())
             if(isNaN(sum))
               sum = 0;
           
-          $('#total').text(parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
+          $('#total').text(sum.format(2, 3, '.', ','));
   else
     real_amount.val((amount.val()*1).toFixed(2))
+    amount_x_fee.val(((amount.val()*1)/fee_select.val()).toFixed(2))
     sum = 0
     $('.real_amount_value').each (index, value) ->
       sum = sum + eval($(this).val())
       if(isNaN(sum))
         sum = 0;
-    $('#total').text(parseFloat(sum, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
+    $('#total').text(sum.format(2, 3, '.', ','));
 
   
   
@@ -145,9 +164,11 @@ calc_debt = (target) ->
         error: (jqXHR, textStatus, errorThrown) ->
           return
         success: (data) ->
-          $('#deuda-total').text(parseFloat(data.debt, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString());
+          $('#deuda-total').text(data.debt.format(2, 3, '.', ','));
           
-  
+          
+
+
 
 
 $(document).ready ->
@@ -193,3 +214,6 @@ $(document).on 'cocoon:after-insert', (e) ->
 $(document).on 'cocoon:after-remove', (e) ->
   if ($('.sales.new').length + $('.sales.edit').length > 0)
     calc_total()
+
+
+

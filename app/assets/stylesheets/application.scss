@@ -170,13 +170,12 @@ sup {
 }
 
 a {
-  color: #007bff;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #0056b3;
+  color: #212529;
   text-decoration: underline;
 }
 
@@ -320,7 +319,10 @@ input[type="month"] {
 }
 
 input[type="number"],
-input[type="text"] {
+input[type="text"],
+input[type="email"],
+input[type="password"]
+ {
   @extend .form-control;
 }
 
@@ -374,8 +376,8 @@ input[type="text"] {
 }
 
 .dot {
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -10862,11 +10864,19 @@ body {
   --input-padding-y: 0.75rem;
 }
 
-.card-login {
+.card-25 {
   max-width: 25rem;
 }
 
-.card-register {
+.card-30 {
+  max-width: 30rem;
+}
+
+.card-40 {
+  max-width: 40rem;
+}
+
+.card-50 {
   max-width: 50rem;
 }
 
@@ -11088,3 +11098,5 @@ td.barby-cell
 td.barby-cell.on {
   background: #000;
 }
+
+

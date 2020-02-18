@@ -1,5 +1,7 @@
 class WayPaysController < ApplicationController
   before_action :set_way_pay, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+
 
   # GET /way_pays
   # GET /way_pays.json

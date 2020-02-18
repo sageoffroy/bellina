@@ -1,6 +1,10 @@
 class FootwearsController < ApplicationController
   before_action :set_footwear, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :verify_authenticity_token
+
+
+
   # GET /footwears
   # GET /footwears.json
   def index

@@ -73,20 +73,30 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-datepicker-rails'
 
 
-#Select 2
+# Select 2
 gem "select2-rails"
 
-#Datatable
+# Datatable
 gem 'jquery-datatables'
 gem 'ajax-datatables-rails'
 gem 'kaminari'
 
-#font-awesome
+# font-awesome
 gem "font-awesome-rails"
 
-#Mensajes de error
+# Mensajes de error
 gem 'toastr-rails'
 
 gem 'cocoon'
 
 gem 'barby'
+
+# Seguridad
+gem 'devise'
+gem 'cancancan'
+gem 'rolify'
+
+# Chart JS
+#gem 'chart-js-rails'
+
+gem 'chartjs-ror'

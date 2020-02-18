@@ -7,17 +7,24 @@
 		<%= f.label 'Cuotas'%>
 		<%= f.select :fee, [1,3,6,12], {}, {class: "select2 fee_select", disabled: "true"}%>
 	</div>
-	<div class="col-sm-3">
+	<div class="col-sm-2">
 		<%= f.label :amount%>
 		<div class="input-icon">
 	      <%= f.text_field :amount, :placeholder => "0.00", :class=>"amount_value" %>
 	      <i>$</i>
 	    </div>
 	</div>
-	<div class="col-sm-3">
+	<div class="col-sm-2">
 		<%= f.label 'Monto + interés'%>
 		<div class="input-icon">
 	      <%= f.text_field :real_amount, :placeholder => "0.00", :class=>"real_amount_value", :readonly => true  %>
+	      <i>$</i>
+	    </div>
+	</div>
+	<div class="col-sm-2">
+		<%= f.label 'Monto x cuota'%>
+		<div class="input-icon">
+	      <input placeholder="0.00" readonly="readonly" type="text" class="amount_x_fee_value">
 	      <i>$</i>
 	    </div>
 	</div>
