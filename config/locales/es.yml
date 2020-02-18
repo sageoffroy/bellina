@@ -56,7 +56,7 @@ es:
         fulname: "Nombre"
         mail: "E-mail"
         telephone: "Teléfono"
-        Address: "Dirección"
+        address: "Dirección"
       
       trademark:
         name: "Nombre"

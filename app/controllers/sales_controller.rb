@@ -31,6 +31,16 @@ class SalesController < ApplicationController
     @sale.state = "Iniciada"
     respond_to do |format|
       if @sale.save
+
+        #incrementar stock
+        @sale.sale_details.each do |sd|
+          fw = Footwear.where(id:sd.footwear_id).first
+          fw.dec_stock(sd.count)
+          fw.save
+        end
+
+        
+
         format.html { redirect_to @sale, notice: 'Sale was successfully created.' }
         format.json { render :show, status: :created, location: @sale }
       else
@@ -44,7 +54,19 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1.json
   def update
     respond_to do |format|
+      @sale.sale_details.each do |sd|
+        fw = Footwear.where(id:sd.footwear_id).first
+        fw.inc_stock(sd.count)
+        fw.save
+      end
+
+
       if @sale.update(sale_params)
+        @sale.sale_details.each do |sd|
+          fw = Footwear.where(id:sd.footwear_id).first
+          fw.dec_stock(sd.count)
+          fw.save
+        end
         format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
         format.json { render :show, status: :ok, location: @sale }
       else
@@ -57,6 +79,11 @@ class SalesController < ApplicationController
   # DELETE /sales/1
   # DELETE /sales/1.json
   def destroy
+    @sale.sale_details.each do |sd|
+      fw = Footwear.where(id:sd.footwear_id).first
+      fw.inc_stock(sd.count)
+      fw.save
+    end
     @sale.destroy
     respond_to do |format|
       format.html { redirect_to sales_url, notice: 'Sale was successfully destroyed.' }

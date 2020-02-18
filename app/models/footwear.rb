@@ -34,7 +34,7 @@ class Footwear < ApplicationRecord
       verification_value = 0
     end
 
-  	self.sku = '779000' + (sprintf '%06d', id) + verification_value.to_s
+  	self.sku = '779999' + (sprintf '%06d', id) + verification_value.to_s
   end
 
   
@@ -49,6 +49,14 @@ class Footwear < ApplicationRecord
 
   def calculate_way_pay(way_pay_name, monthly)
   	return get_retail_price() * WayPay.where(name: way_pay_name).first.get_index(monthly)
+  end
+
+  def dec_stock(count)
+    self.stock = self.stock - count
+  end
+
+  def inc_stock(count)
+    self.stock = self.stock + count
   end
 
   def to_s
