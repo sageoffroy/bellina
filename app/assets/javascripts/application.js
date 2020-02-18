@@ -20,6 +20,7 @@
 //= require select2
 //= require toastr
 //= require cocoon
+//= require onscan.min
 //= require Chart.min
 
 //= require_tree .

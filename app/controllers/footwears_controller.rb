@@ -60,6 +60,17 @@ class FootwearsController < ApplicationController
 
   end
 
+
+  def get_footwear_id
+    sku = params[:sku]
+    id = Footwear.where(sku:sku).first.id
+    respond_to do |format|
+      format.json  { render :json => {:function => "get_footwear_id", :id => id}}
+    end
+    
+  end
+
+
   # PATCH/PUT /footwears/1
   # PATCH/PUT /footwears/1.json
   def update

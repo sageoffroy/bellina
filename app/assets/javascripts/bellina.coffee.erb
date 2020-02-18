@@ -215,5 +215,15 @@ $(document).on 'cocoon:after-remove', (e) ->
   if ($('.sales.new').length + $('.sales.edit').length > 0)
     calc_total()
 
-
-
+onScan.attachTo document
+# Register event listener
+document.addEventListener 'scan', (sScancode, iQuatity) ->
+  if ($('.welcome.index').length > 0)
+    $.ajax
+      type: 'POST'
+      url: '/get_footwear_id/'+sScancode.detail.scanCode
+      error: (jqXHR, textStatus, errorThrown) ->
+        return
+      success: (data) ->
+        window.location.replace("/footwears/" + data.id);
+  

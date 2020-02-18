@@ -31,4 +31,6 @@ Rails.application.routes.draw do
 
   post 'get_way_pay_interest/:id/:fee' => 'way_pays#get_way_pay_interest'
 
+  post 'get_footwear_id/:sku' => 'footwears#get_footwear_id'
+
 end
