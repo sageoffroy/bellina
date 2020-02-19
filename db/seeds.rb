@@ -153,8 +153,8 @@ end
 
 trademarks_list = [
 	["Zurich",1],
-	["Kevingstone",2],
-	["Moleka",3],
+	["Kevingston",2],
+	["Moleca",3],
 	["Molekinho",3],
 	["Vizzano",3],
 	["Modare",3],
@@ -190,5 +190,11 @@ end
 user = User.new
 user.email = 'sageoffroy@gmail.com'
 user.password = 'quitar123'
+user.save!
+user.add_role 'admin'
+
+user = User.new
+user.email = 'titobaulde@hotmail.com '
+user.password = 'test1234'
 user.save!
 user.add_role 'admin'

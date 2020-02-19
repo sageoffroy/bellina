@@ -14,7 +14,7 @@ class Client < ApplicationRecord
 		end
 
 		payments.each do |payment|
-			amount = amount + payment.get_real_amount
+			amount = amount + payment.get_amount
 		end
 		return amount
 	end

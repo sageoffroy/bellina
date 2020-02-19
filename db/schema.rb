@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_02_13_120016) do
     t.string "mail"
     t.string "telephone"
     t.string "address"
+    t.boolean "avanzar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

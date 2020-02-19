@@ -6,6 +6,7 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.string :mail
       t.string :telephone
       t.string :address
+      t.boolean :avanzar
 
       t.timestamps
     end
