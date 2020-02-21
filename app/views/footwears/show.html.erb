@@ -108,14 +108,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% WayPay.all.drop(1).each do |wp| %>
-                  <tr>
-                    <td><%=wp.name%></td>
-                    <td>
-                      <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3) / 3)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3),) %>)</td>
-                    <td><%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6) / 6)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6)) %>)</td>
-                    <td><%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12) / 12 )%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12)) %>)</td>
-                  </tr>
+                  <% WayPay.all.each do |wp| %>
+                    <% if !@footwear.calculate_way_pay(wp.name, 3).nil?%>
+                    <tr>
+                      <td><%=wp.name%></td>
+                      <td>
+                        <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3) / 3)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3),) %>)</td>
+                      <td><%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6) / 6)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6)) %>)</td>
+                      <td><%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12) / 12 )%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12)) %>)</td>
+                    </tr>
+                    <%end%>
                   <%end%>
                 </tbody>
               </table>

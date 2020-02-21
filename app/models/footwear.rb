@@ -48,7 +48,11 @@ class Footwear < ApplicationRecord
   end
 
   def calculate_way_pay(way_pay_name, monthly)
-  	return get_retail_price() * WayPay.where(name: way_pay_name).first.get_index(monthly)
+    if WayPay.where(name: way_pay_name).first.get_index(monthly).nil?
+      return nil
+    else
+  	 return get_retail_price() * WayPay.where(name: way_pay_name).first.get_index(monthly)
+    end
   end
 
   def dec_stock(count)
