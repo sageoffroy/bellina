@@ -87,7 +87,7 @@
               <span style="float:right;"><%= number_to_currency(@footwear.wholesale_price) %></span>
             </li>
             <li class="list-group-item">
-              Precio Contado
+              Precio Contado/Debito
               <span style="float:right;">
                 <% if  @footwear.retail_price.nil? %>
                   <%= number_to_currency(@footwear.wholesale_price * WayPay.first.c1) %>
@@ -144,6 +144,7 @@
       </div>
 
       <% if !@footwear.long_description.nil? %>
+        <br>
         <p style="font-style: italic"><%=@footwear.long_description%></p>
         <hr>
       <%end%>
