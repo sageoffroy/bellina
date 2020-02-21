@@ -109,31 +109,32 @@
                 </thead>
                 <tbody>
                   <% WayPay.all.each do |wp| %>
-                    <tr>
-                      <td><%=wp.name%></td>
-                      <td>
-                        <% if !@footwear.calculate_way_pay(wp.name, 3).nil?%>
-                          <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3) / 3)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3),) %>)
-                        <% else %>  
-                          -
-                        <% end %>  
-                      </td>
-                      <td>
-                        <% if !@footwear.calculate_way_pay(wp.name, 6).nil?%>
-                          <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6) / 6)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6)) %>)
-                        <% else %>  
-                          -
-                        <% end %>  
-                      </td>
-                      <td>
-                        <% if !@footwear.calculate_way_pay(wp.name, 12).nil?%>
-                          <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12) / 12 )%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12)) %>)
-                        <% else %>  
-                          -
-                        <% end %>  
-                      </td>
-                    </tr>
-                    
+                    <% if wp.name.upcase != "DEBITO" and wp.name.upcase != "EFECTIVO" %>
+                      <tr>
+                        <td><%=wp.name%></td>
+                        <td>
+                          <% if !@footwear.calculate_way_pay(wp.name, 3).nil?%>
+                            <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3) / 3)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 3),) %>)
+                          <% else %>  
+                            -
+                          <% end %>  
+                        </td>
+                        <td>
+                          <% if !@footwear.calculate_way_pay(wp.name, 6).nil?%>
+                            <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6) / 6)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6)) %>)
+                          <% else %>  
+                            -
+                          <% end %>  
+                        </td>
+                        <td>
+                          <% if !@footwear.calculate_way_pay(wp.name, 12).nil?%>
+                            <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12) / 12 )%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 12)) %>)
+                          <% else %>  
+                            -
+                          <% end %>  
+                        </td>
+                      </tr>
+                    <%end%>
                   <%end%>
                 </tbody>
               </table>
