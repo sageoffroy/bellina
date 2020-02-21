@@ -10,7 +10,7 @@
 
 <div class="container">
   <div class="card card-register mx-auto mt-5" style="max-width: 53rem;">
-    <div class="card-header active-<%=@footwear.active%>"><%= @footwear.sku %></div>
+    <div class="card-header active-<%=@footwear.active%>"><%= @footwear.short_description %></div>
     <div class="card-body">
       <div class="row">
         <div class="col-md-12">
@@ -40,6 +40,12 @@
 
         </div>
         <div class="col-md-8">
+          <% if !@footwear.article.nil? and  !@footwear.article.blank?%>
+            <p>
+              <strong>Artículo:</strong>
+              <%= @footwear.article%>
+            </p>
+          <% end %>
           <p>
             <strong>Marca (proveedor):</strong>
             <%= @footwear.trademark%>
@@ -77,10 +83,6 @@
 
         <div class="col-md-12">
           <br>
-          <p><strong>Descripción Corta: </strong><%=@footwear.short_description%></p>
-
-          
-
           <ul class="list-group">
             <li class="list-group-item">
               Precio de Lista

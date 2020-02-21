@@ -76,10 +76,12 @@ es:
         real_price: "Precio"
 
       footwear:
+        sku: "Cód. de Barras"
         trademark_id: "Marca"
         trademark: "Marca"
         category_id: "Categoría"
         category: "Categoría"
+        article: "Artículo"
         stock: "Invent. Actual"
         stock_warning: "Invent. Mínimo"
         wholesale_price: "Precio Mayorista"
