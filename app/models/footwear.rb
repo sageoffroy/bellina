@@ -1,5 +1,6 @@
 require 'barby'
 require 'barby/barcode/ean_13'
+require 'barby/barcode/code_39'
 require 'barby/outputter/html_outputter'
 
 class Footwear < ApplicationRecord
@@ -39,7 +40,13 @@ class Footwear < ApplicationRecord
 
   
   def get_barcode
-    Barby::HtmlOutputter.new(Barby::EAN13.new(self.sku[0..11]))
+    byebug
+    if self.sku[0] == 7
+      bar_code = Barby::HtmlOutputter.new(Barby::EAN13.new(self.sku[0..11]))
+    else
+      bar_code = Barby::HtmlOutputter.new(Barby::Code39.new(self.sku[0..14]))
+    end
+
   end
 
 
