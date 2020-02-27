@@ -40,7 +40,6 @@ class Footwear < ApplicationRecord
 
   
   def get_barcode
-    byebug
     if self.sku[0] == 7
       bar_code = Barby::HtmlOutputter.new(Barby::EAN13.new(self.sku[0..11]))
     else
