@@ -40,6 +40,11 @@ class FootwearsController < ApplicationController
         if @footwear.short_description.blank?
           @footwear.short_description = @footwear.category.to_s + " " + @footwear.trademark.to_s + " " + @footwear.size.to_s + " " + @footwear.color.to_s
         end
+
+        if @footwear.retail_price.nil?
+          @footwear.retail_price = @footwear.wholesale_price * 2.2
+        end
+
         @footwear.save
         format.html { redirect_to @footwear, notice: 'Footwear was successfully created.' }
         format.json { render :show, status: :created, location: @footwear }

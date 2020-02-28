@@ -57,7 +57,10 @@ class Footwear < ApplicationRecord
     if WayPay.where(name: way_pay_name).first.get_index(monthly).nil?
       return nil
     else
-  	 return get_retail_price() * WayPay.where(name: way_pay_name).first.get_index(monthly)
+      if self.retail_price.nil?
+        self.retail_price = self.wholesale_price * 2.2
+      end
+      return self.retail_price * WayPay.where(name: way_pay_name).first.get_index(monthly)
     end
   end
 
