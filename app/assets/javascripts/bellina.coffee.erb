@@ -164,7 +164,8 @@ calc_debt = (target) ->
         error: (jqXHR, textStatus, errorThrown) ->
           return
         success: (data) ->
-          $('#deuda-total').text(data.debt.format(2, 3, '.', ','));
+          deuda = data.debt
+          $('#deuda-total').text(deuda.format(2, 3, '.', ','));
           
           
 

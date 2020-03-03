@@ -77,7 +77,6 @@ class WayPaysController < ApplicationController
       when "12"
         interest = WayPay.where(id:id).first.c12
       end
-
       respond_to do |format|
         format.json  { render :json => {:function => "get_way_pay_interest", :interest => interest}}
       end

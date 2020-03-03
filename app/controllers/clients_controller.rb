@@ -40,6 +40,9 @@ class ClientsController < ApplicationController
   def get_client_debt
     id = params[:id]
     debt = Client.where(id:id).first.get_debt
+
+    byebug
+
     respond_to do |format|
       format.json  { render :json => {:function => "get_client_price", :debt => debt}}
     end
