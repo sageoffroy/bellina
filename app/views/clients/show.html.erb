@@ -35,7 +35,13 @@
       <% if @movement.count > 0 %>
         <hr>
         <center><h4>Últimos movimientos</h4></center>
-        <center><strong>Monto actual: <%=number_to_currency(@client.get_debt)%></strong></center>
+        <center><h5><strong>
+          <% if !@client.amount_old.nil? and @client.amount_old.to_i != 0 %>
+           <%= fa_icon 'exclamation-circle', { :style => 'color:red;margin-right:10px;', 'data-toggle'=>"tooltip", 'data-placement'=>"left", 'title'=>"¡El cliente tiene un monto anterior!"} %>
+           
+          <% end %>
+          Monto actual: <%=number_to_currency(@client.get_debt)%>
+        </strong></h5></center>
         <table class="table table-hover">
           <thead>
             <tr>

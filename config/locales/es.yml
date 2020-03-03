@@ -53,10 +53,11 @@ es:
         description: "Descripción"
 
       client:
-        fulname: "Nombre"
+        fullname: "Nombre"
         mail: "E-mail"
         telephone: "Teléfono"
         address: "Dirección"
+        amount_old: "Monto Anterior"
       
       trademark:
         name: "Nombre"

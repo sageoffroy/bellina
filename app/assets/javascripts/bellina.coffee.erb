@@ -172,10 +172,12 @@ calc_debt = (target) ->
 
 
 $(document).ready ->
+  $('[data-toggle="tooltip"]').tooltip()
   $('.datatable').dataTable()
 
 
 $(document).on 'turbolinks:load', ->
+  $('[data-toggle="tooltip"]').tooltip()
   datatable = $('.datatable')
   datatable.DataTable
     'language': 'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json'
@@ -192,7 +194,9 @@ $(document).on 'turbolinks:load', ->
     set_events()
 
   
-
+$ ->
+  $('[data-toggle="tooltip"]').tooltip()
+  
 
 
 $(document).on 'turbolinks:before-cache', ->

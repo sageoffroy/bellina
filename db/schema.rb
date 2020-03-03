@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_112013) do
+ActiveRecord::Schema.define(version: 2020_03_03_105604) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_02_21_112013) do
     t.boolean "avanzar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "amount_old", precision: 8, scale: 2
   end
 
   create_table "colors", force: :cascade do |t|

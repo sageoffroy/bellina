@@ -19,6 +19,7 @@
             <th>Nombre</th>
             <th>Mail</th>
             <th>Dirección</th>
+            <th>Saldo</th>
             <th>Opciones</th>
           </tr>
         </thead>
@@ -30,6 +31,7 @@
               <td><%= client.fullname %></td>
               <td><%= client.mail %></td>
               <td><%= client.address %></td>
+              <td><%= client.get_debt %></td>
               <td>
                 <%= link_to((fa_icon "eye"), client) %>
                 <%= link_to((fa_icon "pencil"), edit_client_path(client)) %>

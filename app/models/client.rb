@@ -9,6 +9,11 @@ class Client < ApplicationRecord
 
 	def get_debt
 		amount = 0
+
+		if !amount_old.nil?
+			amount = amount_old
+		end
+
 		sales.each do |sale|
 			amount = amount - sale.get_amount
 		end

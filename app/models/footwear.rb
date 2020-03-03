@@ -50,7 +50,11 @@ class Footwear < ApplicationRecord
 
 
   def get_retail_price
-  	wholesale_price * WayPay.first.c1	
+    if !retail_price.nil? and retail_price.to_i != 0
+      retail_price
+    else
+      wholesale_price * 2.2
+    end
   end
 
   def calculate_way_pay(way_pay_name, monthly)
