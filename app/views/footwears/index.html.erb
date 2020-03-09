@@ -17,6 +17,7 @@
         <thead>
           <tr>
             <th>Sku</th>
+            <th>Artículo</th>
             <th>Marca</th>
             <th>Categoría</th>
             <th>Inventario</th>
@@ -29,6 +30,7 @@
           <% @footwears.each do |footwear| %>
             <tr>
               <td><%= footwear.sku %></td>
+              <td><%= footwear.article %></td>
               <td><span class="dot" style="background-color:<%= footwear.color.hex_code %>;width:15px;height: 15px;"></span> <%= footwear.trademark %></td>
               <td><%= footwear.category %></td>
               <td><%= footwear.stock %></td>
