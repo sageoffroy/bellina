@@ -1,14 +1,10 @@
 <%= form_with(model: trademark, local: true) do |form| %>
   <% if trademark.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(trademark.errors.count, "error") %> prohibited this trademark from being saved:</h2>
-
-      <ul>
+    <script type="text/javascript">
       <% trademark.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        toastr['error']('<%= message %>');
       <% end %>
-      </ul>
-    </div>
+    </script>
   <% end %>
 
   <div class="field">

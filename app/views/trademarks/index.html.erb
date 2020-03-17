@@ -26,7 +26,11 @@
           <% @trademarks.each do |trademark| %>
             <tr>
               <td><%= trademark.name %></td>
-              <td><a href="/providers/<%= trademark.provider.id %>"><%= trademark.provider %></a></td>
+              <td>
+                <% if !trademark.provider.nil? %>      
+                  <a href="/providers/<%= trademark.provider.id %>"><%= trademark.provider %></a>
+                <% end %>
+              </td>
               <td>
                 <%= link_to((fa_icon "eye"), trademark) %>
                 <%= link_to((fa_icon "pencil"), edit_trademark_path(trademark)) %>
