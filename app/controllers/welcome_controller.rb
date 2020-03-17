@@ -9,8 +9,8 @@ class WelcomeController < ApplicationController
 
 		sales_of_months = []
 		(1..12).each do |i|
-			sales_of_months.push(Sale.where("cast(strftime('%m', date_sale) as int) = ?", i).count)  #SQLite
-			#sales_of_months.push(Sale.where("extract(month from created_at) + 0 = ?", i).count)       #Otros
+			#sales_of_months.push(Sale.where("cast(strftime('%m', date_sale) as int) = ?", i).count)  #SQLite
+			sales_of_months.push(Sale.where("extract(month from created_at) + 0 = ?", i).count)       #Otros
 		end
 
 		@data = {
