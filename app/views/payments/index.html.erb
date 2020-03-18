@@ -18,7 +18,7 @@
             <th>Fecha</th>
             <th>Cliente</th>
             <th>Monto</th>
-            <th>Intereses</th>
+            <th>Monto + Intereses</th>
             <th>Opciones</th>
           </tr>
         </thead>
@@ -28,8 +28,8 @@
             <tr>
                 <td><%= payment.payment_date %></td>
                 <td><%= payment.client %></td>
+                <td><%= number_to_currency(payment.get_amount) %></td>
                 <td><%= number_to_currency(payment.get_real_amount) %></td>
-                <td><%= number_to_currency(payment.get_real_amount - payment.get_amount) %></td>
                 <td>
                   <%= link_to((fa_icon "eye"), payment) %>
                   <%= link_to((fa_icon "pencil"), edit_payment_path(payment)) %>

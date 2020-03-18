@@ -3,7 +3,7 @@
     <a href="/">Tablero</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="<%=sales_path%>">Ventas</a>
+    <a href="<%=payments_path%>">Pagos</a>
   </li>
   <li class="breadcrumb-item active"><%= @payment.id %></li>
 </ol>
@@ -25,17 +25,21 @@
 		 			<thead>
 	          <tr>
 	            <th>Método de Pago</th>
-	            <th>Monto</th>
-	            <th>Intereses</th>
+	            <th><center>Cuotas</center></th>
+	            <th><center>Monto</center></th>
+	            <th><center>Monto + Intereses</center></th>
 	          </tr>
 	        </thead>
 		      </tbody>
 		      	<% @payment.payment_details.each do |payment_details| %>
-			      <tr>
-			      	<td><%= payment_details.way_pay%></td>
-					<td><%= number_to_currency(payment_details.amount)%></td>
-			      </tr>
-					<% end %>
+				      <tr>
+				      	<td><%= payment_details.way_pay%></td>
+				      	<td><center><%= payment_details.fee%></center></td>
+								<td><center><%= number_to_currency(payment_details.amount)%></center></td>
+								<td><center><%= number_to_currency(payment_details.real_amount)%></center></td>
+								
+				      </tr>
+						<% end %>
 					</tbody>
 				</table>  
 				

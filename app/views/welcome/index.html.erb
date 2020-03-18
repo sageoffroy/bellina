@@ -74,6 +74,43 @@
     
   </div>
 
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fas fa-chart-area"></i>
+      Planilla Diaria
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="datatable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Movimiento</th>
+              <th>Cliente</th>
+              <th>Monto</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @movements.each_with_index do |m, i| %>
+              <% if m[0] === "pago" %>
+                <tr class="<%=m[0]%>" onclick="window.location='/payments/<%=m[1]%>';">
+              <% else %>
+                <tr class="<%=m[0]%>" onclick="window.location='/sales/<%=m[1]%>';">
+              <% end %>
+                  <td class="noselect"><%=i+1%></td>
+                  <td class="noselect"><%=m[2]%></td>
+                  <td class="noselect"><%=m[3]%></td>
+                  <td class="noselect"><%=m[4]%></td>
+                </tr>
+            <% end %>    
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+  </div>
+
   <!-- Area Chart Example-->
   <div class="card mb-3">
     <div class="card-header">

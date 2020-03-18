@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'daily_sheet/index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'

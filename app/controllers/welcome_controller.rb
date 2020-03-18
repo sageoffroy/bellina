@@ -5,12 +5,32 @@ class WelcomeController < ApplicationController
 		@clients = Client.all.count
 		@sales = Sale.all.count
 
+		payments_of_day = []
+		sales_of_day = []
+		@movements = []
+		movements = []
+
+		payments_of_day = Payment.where(payment_date: Date.today.all_day)
+		sales_of_day = Sale.where(date_sale: Date.today.all_day)
 		
+
+    	sales_of_day.each do |sale|
+      		movements << ["compra", sale.id, sale.date_sale, sale.client, sale.get_amount * -1]
+    	end	
+
+    	payments_of_day.each do |payment|
+      		movements << ["pago", payment.id, payment.payment_date, payment.client, payment.get_amount]
+    	end
+
+    	@movements = movements
 
 		sales_of_months = []
 		(1..12).each do |i|
-			#sales_of_months.push(Sale.where("cast(strftime('%m', date_sale) as int) = ?", i).count)  #SQLite
-			sales_of_months.push(Sale.where("extract(month from created_at) + 0 = ?", i).count)       #Otros
+			if Rails.env.production?
+				sales_of_months.push(Sale.where("extract(month from created_at) + 0 = ?", i).count)       #Otros
+			else
+				sales_of_months.push(Sale.where("cast(strftime('%m', date_sale) as int) = ?", i).count)  #SQLite
+			end
 		end
 
 		@data = {

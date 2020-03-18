@@ -52,8 +52,7 @@ set_events = ->
       event_target = $(e.currentTarget);
       calc_value(event_target.parents('.field'))
 
-  if ($('.payments.new').length > 0)
-    
+  if (($('.payments.edit').length  + $('.payments.new').length) > 0)
     client_select = $("#client_select")
     client_select.on 'select2:select', (e) ->
       calc_debt(e)
@@ -73,6 +72,7 @@ set_events = ->
     amount_text_field.on 'input', (e) ->
       event_target = $(e.currentTarget);
       calc_amount(event_target.parents('.field'))
+
 
 calc_total = ->
   sum = 0
@@ -110,11 +110,11 @@ calc_amount = (parent) ->
   fee_select = parent.find('.fee_select')
   
   #Habilitar cuotas si no es efectivo
-  if way_pay_id > 1
-    fee_select.prop('disabled', false)
-  else
-    fee_select.prop('disabled', true)
-    fee_select.val(1).trigger('change.select2')
+  #if way_pay_id > 1
+    #fee_select.prop('disabled', false)
+  #else
+    #fee_select.prop('disabled', true)
+    #fee_select.val(1).trigger('change.select2')
 
   
   amount = parent.find('.amount_value')
@@ -151,9 +151,6 @@ calc_amount = (parent) ->
     $('#total').text(sum.format(2, 3, '.', ','));
 
   
-  
-
-
 calc_debt = (target) ->
   client = $('#client_select')
   id = client.val()
@@ -165,16 +162,13 @@ calc_debt = (target) ->
           return
         success: (data) ->
           deuda = data.debt
-          $('#deuda-total').text(deuda.format(2, 3, '.', ','));
-          
-          
-
-
+          $('#deuda-total').text(deuda.format(2, 3, '.', ',')); 
 
 
 $(document).ready ->
   $('[data-toggle="tooltip"]').tooltip()
   $('.datatable').dataTable()
+  
 
 
 $(document).on 'turbolinks:load', ->
@@ -193,7 +187,6 @@ $(document).on 'turbolinks:load', ->
 
   
     set_events()
-
   
 $ ->
   $('[data-toggle="tooltip"]').tooltip()
