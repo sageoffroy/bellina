@@ -23,7 +23,11 @@ class Footwear < ApplicationRecord
   has_one_attached :avatar
   
   def get_select_description
-    "(" + self.sku + ") " + self.category.to_s + " " + self.trademark.to_s
+    if article.nil? or article.blank? 
+      "(" + self.sku + ") " + self.category.to_s + " " + self.trademark.to_s
+    else
+      "(" + self.sku + ") " + self.category.to_s + " " + self.article
+    end
   end
 
   def create_sku

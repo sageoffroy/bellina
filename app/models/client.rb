@@ -4,7 +4,11 @@ class Client < ApplicationRecord
 	has_many :payments
 
 	def to_s
-		fullname + " (" + dni.to_s + " )"
+		if dni.nil? or dni.blank?	
+			fullname
+		else
+			fullname + " (" + dni.to_s + " )"
+		end
 	end
 
 	def get_debt
