@@ -26,7 +26,8 @@
 		 			<thead>
 	          <tr>
 	            <th>Cantidad</th>
-	            <th>Calzado</th>
+	            <th>Artículo</th>
+	            <th>Detalle</th>
 	            <th>Precio</th>
 	          </tr>
 	        </thead>
@@ -34,6 +35,7 @@
 			    <% @sale.sale_details.each do |sale_details| %>
 			      <tr>
 			      	<td><%= sale_details.count%></td>
+			      	<td><%= sale_details.footwear.article%></td>
 					<td><%= sale_details.footwear.short_description%></td>
 					<td><%= number_to_currency(sale_details.real_price)%></td>
 			      </tr>
