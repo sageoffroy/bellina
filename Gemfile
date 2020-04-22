@@ -100,3 +100,5 @@ gem 'rolify'
 #gem 'chart-js-rails'
 
 gem 'chartjs-ror'
+
+gem 'chunky_png'

@@ -1,8 +1,3 @@
-require 'barby'
-require 'barby/barcode/ean_13'
-require 'barby/barcode/code_39'
-require 'barby/outputter/html_outputter'
-
 class Footwear < ApplicationRecord
   belongs_to :trademark
   belongs_to :category
@@ -45,11 +40,15 @@ class Footwear < ApplicationRecord
   
   def get_barcode
     if self.sku[0] == 7
-      bar_code = Barby::HtmlOutputter.new(Barby::EAN13.new(self.sku[0..11]))
+      bar_code = Barby::PngOutputter.new(Barby::EAN13.new(self.sku[0..11]))
     else
-      bar_code = Barby::HtmlOutputter.new(Barby::Code39.new(self.sku[0..14]))
+      bar_code = Barby::PngOutputter.new(Barby::Code39.new(self.sku[0..14]))
     end
+    bar_code.margin = 0 
+    bar_code.width
 
+    File.open('app/assets/images/barcode.png', 'wb'){|f| f.write bar_code.to_png }
+    
   end
 
 

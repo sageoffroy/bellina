@@ -14,6 +14,7 @@ class FootwearsController < ApplicationController
   # GET /footwears/1
   # GET /footwears/1.json
   def show
+    @footwear.get_barcode
   end
 
   # GET /footwears/new

@@ -26,15 +26,19 @@
         </div>
         <div class="col-md-4">
           <div class="thumbnail">
-          <% if @footwear.avatar.attached? %>
-            <img src="<%=url_for(@footwear.avatar)%>" class="" alt="San Fran" style="width:204px;height:auto;"> 
-          <% else %>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT47Iy_5Ta74Q-2vZ4YhSNbSUYDAFtCsP6ABoHkZBaU3kG9RBOA" class="img-fluid img-thumbnail" alt="San Fran" style="width:204px;height:auto;">
-          <% end %>
-          </div>
-          <%= raw @footwear.get_barcode.to_html %>
+            <% if @footwear.avatar.attached? %>
+              <img src="<%=url_for(@footwear.avatar)%>" class="" alt="San Fran" style="width:204px;height:auto;"> 
+            <% else %>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT47Iy_5Ta74Q-2vZ4YhSNbSUYDAFtCsP6ABoHkZBaU3kG9RBOA" class="img-fluid img-thumbnail" alt="San Fran" style="width:204px;height:auto;">
+            <% end %>
           
-          <div style="max-width: 200px;text-align: center;">
+          </div>
+          <div style="width: 100%;text-align:center;">
+          <%= image_tag "barcode.png", class: "center-block" %>
+          </div>
+     
+          
+          <div style="max-width: 100%;text-align: center;">
             <%= @footwear.sku %>
           </div>
 

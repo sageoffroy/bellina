@@ -577,10 +577,11 @@ mark,
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
-  border: 1px solid #dee2e6;
+  border: 0px;
   border-radius: 0.25rem;
   max-width: 100%;
   height: auto;
+
 }
 
 .figure {
@@ -10999,9 +11000,9 @@ a .fa {
 
 .thumbnail {
   position: relative;
-  width: 200px;
   height: 200px;
   overflow: hidden;
+  margin-bottom: 15px;
 }
 .thumbnail img {
   position: absolute;
