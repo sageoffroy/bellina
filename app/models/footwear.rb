@@ -45,8 +45,6 @@ class Footwear < ApplicationRecord
       bar_code = Barby::PngOutputter.new(Barby::Code39.new(self.sku[0..14]))
     end
     bar_code.margin = 0 
-    bar_code.width
-
     File.open('app/assets/images/barcode.png', 'wb'){|f| f.write bar_code.to_png }
     
   end

@@ -15,6 +15,11 @@ class FootwearsController < ApplicationController
   # GET /footwears/1.json
   def show
     @footwear.get_barcode
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf {render template:'footwears/template', pdf:"Nombre"}
+    end
   end
 
   # GET /footwears/new
