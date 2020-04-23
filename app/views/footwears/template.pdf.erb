@@ -1,18 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<title> </title>
-</head>
-<body>
-		<p> Hola Mundo </p>
-		<%= image_tag "barcode.png", class: "center-block" %>
-		<div style="width: 100%;text-align:center;">
-    	  <%= image_tag "barcode.png", class: "center-block" %>
-      	</div>
-     
-          
-    	<div style="max-width: 100%;text-align: center;">
-        	<%= @footwear.sku %>
-        </div>
-</body>
+  <head>
+    <meta charset='utf-8' />
+    <%= stylesheet_link_tag wicked_pdf_asset_base64("pdf") %>
+    <%= javascript_include_tag wicked_pdf_asset_base64("number_pages") %>
+
+  </head>
+  <body onload='number_pages'>
+    <div id="header">
+      <%= image_tag wicked_pdf_asset_base64('barcode.png') %>
+    </div>
+    <div id="content">
+      <%= @footwear.sku %>
+    </div>
+  </body>
 </html>
