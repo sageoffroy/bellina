@@ -4,11 +4,10 @@
     <meta charset='utf-8' />
   </head>
   <body onload='number_pages'>
-    <div id="header">
-      <%= image_tag wicked_pdf_asset_base64('barcode.png') %>
-    </div>
-    <div id="content">
-      <%= @footwear.sku %>
+		<div id="content">
+			<center><%= @footwear.article %></center>
+		  <center><%= image_tag wicked_pdf_asset_base64('barcode.png') %></center>
+    	<center><%= @footwear.sku %></center>
     </div>
   </body>
 </html>
