@@ -42,6 +42,8 @@
             <%= @footwear.sku %>
           </div>
 
+          <%= link_to image_tag("print_button.png", class: :float_button, alt: "Imprimir"), footwears_path+"/"+@footwear.id.to_s+".pdf", target: :_blank %>
+
         </div>
         <div class="col-md-8">
           <% if !@footwear.article.nil? and  !@footwear.article.blank?%>

@@ -304,6 +304,17 @@ button::-moz-focus-inner,
   border-style: none;
 }
 
+.float_button {
+  position: absolute;
+  bottom: 80px;
+  left: 35px;
+  width: 40px;
+}
+
+.float_button:hover {
+  
+}
+
 input[type="radio"],
 input[type="checkbox"] {
   -webkit-box-sizing: border-box;
