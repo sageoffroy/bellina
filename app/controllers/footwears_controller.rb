@@ -18,7 +18,7 @@ class FootwearsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-      format.pdf {render template:'footwears/template', pdf:"Nombre", page_size: nil, page_width:"5in", page_height:"5in"}
+      format.pdf {render template:'footwears/template', pdf:'Nombre', page_size: nil, page_width:'2in', page_height:'1in'}
     end
   end
 
