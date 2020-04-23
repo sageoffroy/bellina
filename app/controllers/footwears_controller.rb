@@ -19,6 +19,12 @@ class FootwearsController < ApplicationController
       format.html
       format.json
       format.pdf {render template:'footwears/template', pdf:"Nombre"}
+      format.pdf do
+        render  pdf:'barcode',
+                template:'footwears/template',
+                page_height:100,
+                page_width:200
+      end      
     end
   end
 
