@@ -73,6 +73,14 @@
     </div>
     
   </div>
+  
+  <div class="row">
+    <div class="col-xl-2 col-sm-4 mb-2">
+      <%= form_with do %>
+        <%= text_field_tag "date","", :class => "datepicker", placeholder: 'Ingrese una fecha'  %>
+      <% end %>
+    </div>
+  </div>
 
   <div class="card mb-3">
     <div class="card-header">
@@ -81,7 +89,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="datatable">
+        <table class="table">
           <thead>
             <tr>
               <th>#</th>
@@ -99,7 +107,7 @@
                 <tr class="<%=m[0]%>" onclick="window.location='/sales/<%=m[1]%>';">
               <% end %>
                   <td class="noselect"><%=i+1%></td>
-                  <td class="noselect"><%=m[2]%></td>
+                  <td class="noselect"><%=m[0]%></td>
                   <td class="noselect"><%=m[3]%></td>
                   <td class="noselect"><%=m[4]%></td>
                 </tr>
@@ -121,3 +129,14 @@
     </div>
     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   </div>
+
+  <script type="text/javascript">
+    $(".datepicker").on("change", function() {
+      var str = $("#date"). val();
+      console.log("La fecha ahora es: " + str);
+      window.location.href = "/welcome/index/"+str
+
+
+    });
+
+  </script>

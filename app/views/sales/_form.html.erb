@@ -9,7 +9,7 @@
   <div class="field row">
     <div class="col-sm-4">
       <%= f.label :date_sale%>
-      <%= f.text_field :date_sale, :class => "datepicker" %>
+      <%= f.text_field :date_sale, :class => "datepicker", :value=>"#{f.object.date_sale.strftime("%d/%m/%Y") unless f.object.new_record?}"%>
     </div>
     <div class="col-sm-6">
       <%= f.label :client_id%>

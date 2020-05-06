@@ -5,13 +5,28 @@ class WelcomeController < ApplicationController
 		@clients = Client.all.count
 		@sales = Sale.all.count
 
+
+		day = params[:day]
+		month = params[:month]
+    year = params[:year]
+
+    
+
+    if day.nil? or month.nil? or year.nil?
+    	date_table = Date.today.all_day
+    else
+    	date_table = Date.new(year.to_i, month.to_i, day.to_i)
+    end
+    
+
+
 		payments_of_day = []
 		sales_of_day = []
 		@movements = []
 		movements = []
 
-		payments_of_day = Payment.where(payment_date: Date.today.all_day)
-		sales_of_day = Sale.where(date_sale: Date.today.all_day)
+		payments_of_day = Payment.where(payment_date: date_table)
+		sales_of_day = Sale.where(date_sale: date_table)
 		
 
     	sales_of_day.each do |sale|
@@ -84,8 +99,36 @@ class WelcomeController < ApplicationController
   end
 
 
-  def get_data
 
+  def set_period
+  	month = params[:month]
+    year = params[:year]
+    current_user.period = month+year
+    current_user.save
+    
+    respond_to do |format|
+      format.json  { render :json => {:month => month, :year => year}}
+    end
+  
+
+		payments_of_day = []
+		sales_of_day = []
+		@movements = []
+		movements = []
+
+		payments_of_day = Payment.where(payment_date: Date.today.all_day)
+		sales_of_day = Sale.where(date_sale: Date.today.all_day)
+
+
+		sales_of_day.each do |sale|
+				movements << ["compra", sale.id, sale.date_sale, sale.client, sale.get_amount * -1]
+		end	
+
+		payments_of_day.each do |payment|
+				movements << ["pago", payment.id, payment.payment_date, payment.client, payment.get_amount]
+		end
+
+		@movements = movements
 
 
   end

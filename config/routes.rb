@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :colors
   resources :providers
 
+  get 'welcome/index/:day/:month/:year' => 'welcome#index'
   get 'welcome/index'
   root 'welcome#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -33,5 +34,7 @@ Rails.application.routes.draw do
   post 'get_way_pay_interest/:id/:fee' => 'way_pays#get_way_pay_interest'
 
   post 'get_footwear_id/:sku' => 'footwears#get_footwear_id'
+
+
 
 end

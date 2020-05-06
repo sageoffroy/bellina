@@ -10,7 +10,11 @@
   <div class="field row">
     <div class="col-sm-4">
       <%= f.label :payment_date%>
-      <%= f.text_field :payment_date, :class => "datepicker" %>
+      <%= f.text_field :payment_date, :class => "datepicker" , :value=>"#{f.object.payment_date.strftime("%d/%m/%Y") unless f.object.new_record?}"%>
+
+
+
+
     </div>
     <div class="col-sm-6">
       <%= f.label :client_id%>
