@@ -44,7 +44,7 @@ class Footwear < ApplicationRecord
     else
       bar_code = Barby::PngOutputter.new(Barby::Code39.new(self.sku[0..14],true))
     end
-    bar_code.margin = 0 
+    bar_code.margin = 1 
     bar_code.height = 60
     bar_code.xdim = 1
     
