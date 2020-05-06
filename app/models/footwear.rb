@@ -46,7 +46,7 @@ class Footwear < ApplicationRecord
     end
     bar_code.margin = 0 
     bar_code.height = 50
-    bar_code.xdim = 1
+    bar_code.xdim = 2
     
     File.open('app/assets/images/barcode.png', 'wb'){|f| f.write bar_code.to_png }
     
