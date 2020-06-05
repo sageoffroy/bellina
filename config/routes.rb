@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   post 'get_retail_price/:id' => 'footwears#get_retail_price'
 
+  post 'get_fees/:total' => 'way_pays#get_fees'
+
   post 'get_client_debt/:id' => 'clients#get_client_debt'
 
   post 'get_way_pay_interest/:id/:fee' => 'way_pays#get_way_pay_interest'

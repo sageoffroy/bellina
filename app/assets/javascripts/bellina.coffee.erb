@@ -77,12 +77,50 @@ set_events = ->
 
 
 calc_total = ->
-  sum = 0
+  total = 0
   $('.footwear_value').each ->
-    sum += parseFloat(@value)
-    if(isNaN(sum))
-      sum = 0;
-  $('#total').text(sum.format(2, 3, '.', ','));
+    total += parseFloat(@value)
+    if(isNaN(total))
+      total = 0;
+  $('#total').text(total.format(2, 3, '.', ','));
+  if total != 0
+    $.ajax
+      type: 'POST'
+      url: '/get_fees/'+total
+      error: (jqXHR, textStatus, errorThrown) ->
+        return
+      success: (data) ->
+        $("#table-fees>tbody").empty()
+        i = 0
+        while i < data.fees_array.length
+          fee3 = data.fees_array[i][1]
+          fee6 = data.fees_array[i][2]
+          fee9 = data.fees_array[i][3]
+          fee12 = data.fees_array[i][4]
+          
+          if (fee3 == null)
+            fee3 = '<span style="color:red;">No disponible</span>'
+          else
+            fee3 = "$ " + fee3.format(2, 3, '.', ',')
+
+          if (fee6 == null)
+            fee6 = '<span style="color:red;">No disponible</span>'
+          else
+            fee6 = "$ " + fee6.format(2, 3, '.', ',')
+
+          if (fee9 == null)
+            fee9 = '<span style="color:red;">No disponible</span>'
+          else
+            fee9 = "$ " + fee9.format(2, 3, '.', ',')
+
+          if (fee12 == null)
+            fee12 = '<span style="color:red;">No disponible</span>'
+          else
+            fee12 = "$ " + fee12.format(2, 3, '.', ',')
+
+
+          $("#table-fees>tbody").append("<tr><td>"+data.fees_array[i][0]+"</td><td>"+fee3+"</td><td>"+fee6+"</td><td>"+fee9+"</td><td>"+fee12+"</td></tr>");
+          i++;
 
 
 calc_value = (parent) ->

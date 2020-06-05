@@ -112,6 +112,7 @@
                     <th scope="col">Tajerta</th>
                     <th scope="col">3 cuotas</th>
                     <th scope="col">6 cuotas</th>
+                    <th scope="col">9 cuotas</th>
                     <th scope="col">12 coutas</th>
                   </tr>
                 </thead>
@@ -130,6 +131,13 @@
                         <td>
                           <% if !@footwear.calculate_way_pay(wp.name, 6).nil?%>
                             <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6) / 6)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 6)) %>)
+                          <% else %>  
+                            -
+                          <% end %>  
+                        </td>
+                        <td>
+                          <% if !@footwear.calculate_way_pay(wp.name, 9).nil?%>
+                            <%= number_to_currency(@footwear.calculate_way_pay(wp.name, 9) / 9)%>  (<%= number_to_currency(@footwear.calculate_way_pay(wp.name, 9)) %>)
                           <% else %>  
                             -
                           <% end %>  

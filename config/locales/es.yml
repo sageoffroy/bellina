@@ -311,6 +311,10 @@ es:
         create: Crear venta
         submit: Guardar venta
         update: Actualizar venta
+      payment:  
+        create: Crear pago
+        submit: Guardar pago
+        update: Actualizar pago
 
   number:
     currency:

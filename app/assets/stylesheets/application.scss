@@ -341,9 +341,15 @@ input[type="password"]
   color:green;
 }
 
-.compra {
-  color:red;
+.venta {
+  color:blue;
 }
+
+.venta:hover, .pago:hover {
+  cursor: pointer; 
+}
+
+ 
 
 .active-true {
   color:green;
@@ -5054,6 +5060,11 @@ input[type="button"].btn-block {
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
+
+.card-footer .row div {
+  /*margin-bottom: 5px;*/
+}
+
 
 .card-footer:last-child {
   border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);

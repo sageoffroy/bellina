@@ -7,7 +7,7 @@
 
   <!-- Icon Cards-->
   <div class="row">
-    <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="col-xl-3 col-sm-3 mb-3">
       <div class="card text-white bg-primary o-hidden h-100">
         <div class="card-body">
           <div class="card-body-icon">
@@ -23,7 +23,7 @@
         </a>
       </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="col-xl-3 col-sm-3 mb-3">
       <div class="card text-white bg-warning o-hidden h-100">
         <div class="card-body">
           <div class="card-body-icon">
@@ -39,7 +39,7 @@
         </a>
       </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="col-xl-3 col-sm-3 mb-3">
       <div class="card text-white bg-danger o-hidden h-100">
         <div class="card-body">
           <div class="card-body-icon">
@@ -55,7 +55,7 @@
         </a>
       </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-3">
+    <div class="col-xl-3 col-sm-3 mb-3">
       <div class="card text-white bg-success o-hidden h-100">
         <div class="card-body">
           <div class="card-body-icon">
@@ -109,16 +109,41 @@
                   <td class="noselect"><%=i+1%></td>
                   <td class="noselect"><%=m[0]%></td>
                   <td class="noselect"><%=m[3]%></td>
-                  <td class="noselect"><%=m[4]%></td>
+                  <td class="noselect"><%=number_to_currency(m[4])%></td>
                 </tr>
             <% end %>    
           </tbody>
         </table>
       </div>
     </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-  </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-xl-3 col-sm-3">
+          <strong>Ventas:</strong> <%= number_to_currency(@ventas_total)%>
+        </div>
+        <div class="col-xl-3 col-sm-3">
+          <strong>Pagos:</strong> <%= number_to_currency(@pagos_total)%>
+        </div>
+        <div class="col-xl-3 col-sm-3">
+          <strong>Avanzar:</strong> <%= number_to_currency(@avanzar_total)%>
+        </div>
+        <div class="col-xl-3 col-sm-3">
+          <strong>Efectivo:</strong> <%= number_to_currency(@efectivo_total)%>
+        </div>
+        <div class="col-xl-3 col-sm-3">
+          <strong>Débito:</strong> <%= number_to_currency(@debito_total)%>
+        </div>
+        <div class="col-xl-3 col-sm-3">
+          <strong>Tarjeta:</strong> <%= number_to_currency(@tarjetas_total)%>
+        </div>
+        <div class="col-xl-3 col-sm-3">
+          <strong>Crédito:</strong> <%= number_to_currency(@credito_total)%>
+        </div>
 
+        
+      </div>
+    </div>
+  </div>  
   <!-- Area Chart Example-->
   <div class="card mb-3">
     <div class="card-header">

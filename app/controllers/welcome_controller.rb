@@ -8,18 +8,15 @@ class WelcomeController < ApplicationController
 
 		day = params[:day]
 		month = params[:month]
-    year = params[:year]
+	    year = params[:year]
 
     
 
-    if day.nil? or month.nil? or year.nil?
-    	date_table = Date.today.all_day
-    else
-    	date_table = Date.new(year.to_i, month.to_i, day.to_i)
-    end
-    
-
-
+	    if day.nil? or month.nil? or year.nil?
+	    	date_table = Date.today.all_day
+	    else
+	    	date_table = Date.new(year.to_i, month.to_i, day.to_i)
+	    end
 		payments_of_day = []
 		sales_of_day = []
 		@movements = []
@@ -28,13 +25,36 @@ class WelcomeController < ApplicationController
 		payments_of_day = Payment.where(payment_date: date_table)
 		sales_of_day = Sale.where(date_sale: date_table)
 		
-
+		@ventas_total = 0
     	sales_of_day.each do |sale|
-      		movements << ["compra", sale.id, sale.date_sale, sale.client, sale.get_amount * -1]
+    		@ventas_total = @ventas_total + sale.get_amount
+      		movements << ["venta", sale.id, sale.date_sale, sale.client, sale.get_amount]
     	end	
 
+    	@pagos_total = 0
+    	@efectivo_total = 0
+    	@debito_total = 0
+    	@tarjetas_total = 0
+    	@credito_total = 0
+    	@avanzar_total = 0
     	payments_of_day.each do |payment|
       		movements << ["pago", payment.id, payment.payment_date, payment.client, payment.get_amount]
+      		@pagos_total = @pagos_total + payment.get_amount
+      		payment.payment_details.each do |detail|
+      			case detail.way_pay.name
+      			when "DEBITO"
+      				@debito_total = @debito_total + detail.amount
+      			when "EFECTIVO"
+      				@efectivo_total = @efectivo_total + detail.amount
+      			when "AVANZAR"
+      				@avanzar_total = @avanzar_total + detail.amount
+      			when "CREDITO"
+      				@credito_total = @credito_total + detail.amount
+      			else
+      				@tarjetas_total = @tarjetas_total + detail.amount
+      			end
+      		end
+
     	end
 
     	@movements = movements
