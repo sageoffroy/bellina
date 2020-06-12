@@ -57,7 +57,7 @@ set_events = ->
   if (($('.payments.edit').length  + $('.payments.new').length) > 0)
     client_select = $("#client_select")
     client_select.on 'select2:select', (e) ->
-      calc_debt(e)
+      calc_debt()
 
     way_pay_select = $(".way_pay_select")
     way_pay_select.on 'select2:select', (e) ->
@@ -71,9 +71,7 @@ set_events = ->
 
     amount_text_field = $(".amount_value")
 
-    amount_text_field.on 'input', (e) ->
-      event_target = $(e.currentTarget);
-      calc_amount(event_target.parents('.field'))
+    
 
 
 calc_total = ->
@@ -179,7 +177,7 @@ calc_amount = (parent) ->
             if(isNaN(sum))
               sum = 0;
           
-          $('#total').text(sum.format(2, 3, '.', ','));
+          $('#total').text(sum.format(2, 3, '.', ','))
   else
     real_amount.val((amount.val()*1).toFixed(2))
     amount_x_fee.val(((amount.val()*1)/fee_select.val()).toFixed(2))
@@ -188,10 +186,10 @@ calc_amount = (parent) ->
       sum = sum + eval($(this).val())
       if(isNaN(sum))
         sum = 0;
-    $('#total').text(sum.format(2, 3, '.', ','));
+    $('#total').text(sum.format(2, 3, '.', ','))
 
   
-calc_debt = (target) ->
+calc_debt = () ->
   client = $('#client_select')
   id = client.val()
   if id.length > 0
@@ -202,7 +200,8 @@ calc_debt = (target) ->
           return
         success: (data) ->
           deuda = data.debt
-          $('#deuda-total').text(deuda.format(2, 3, '.', ',')); 
+          console.log deuda
+          $('#deuda-total').text(deuda.format(2, 3, '.', ','))
 
 
 $(document).ready ->

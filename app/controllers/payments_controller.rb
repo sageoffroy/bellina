@@ -14,6 +14,16 @@ class PaymentsController < ApplicationController
 
   # GET /payments/new
   def new
+    @debt = 0
+    if !params[:id].nil?
+      @id = params[:id]
+      client = Client.where(id:@id).first
+      if !client.nil?
+        @debt = client.get_debt
+      end
+
+    end
+    
     @payment = Payment.new
   end
 
