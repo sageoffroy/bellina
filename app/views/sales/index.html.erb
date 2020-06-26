@@ -31,7 +31,7 @@
               <td>
                 <%= link_to((fa_icon "eye"), sale) %>
                 <%= link_to((fa_icon "pencil"), edit_sale_path(sale)) %>
-                <%= link_to((fa_icon "money"), edit_sale_path(sale), {:style=>'color:green;'})  %>
+                <%= link_to((fa_icon "money"), new_payment_path+"/"+sale.client.id.to_s, {:style=>'color:green;'})  %>
                 <%= link_to((fa_icon "trash-o"), sale, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) %>
               </td>
             </tr>

@@ -58,19 +58,26 @@ set_events = ->
     client_select = $("#client_select")
     client_select.on 'select2:select', (e) ->
       calc_debt()
+      return
 
     way_pay_select = $(".way_pay_select")
     way_pay_select.on 'select2:select', (e) ->
       event_target = $(e.currentTarget);
       calc_amount(event_target.parents('.field'))
+      return
 
     fee_select = $(".fee_select")
     fee_select.on 'select2:select', (e) ->
       event_target = $(e.currentTarget);
       calc_amount(event_target.parents('.field'))
+      return
 
     amount_text_field = $(".amount_value")
-
+    console.log(amount_text_field)
+    amount_text_field.on 'change keydown paste input', (e) ->
+      event_target = $(e.currentTarget);
+      calc_amount(event_target.parents('.field'))
+      return
     
 
 

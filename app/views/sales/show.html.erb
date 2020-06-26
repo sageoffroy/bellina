@@ -51,7 +51,7 @@
   		<div class="text-center col-md-12">
   			<%= link_to 'Volver', :back, class: "btn btn-primary" %>
 		  	<%= link_to 'Editar', edit_sale_path(@sale), class: "btn btn-primary" %>
-		  	<%= link_to 'Pagar', new_payment_path+"/"+@sale.id.to_s, class: "btn btn-success" %>
+		  	<%= link_to 'Pagar', new_payment_path+"/"+@sale.client.id.to_s, class: "btn btn-success" %>
 		  </div>
   	</div>
 	</div>
