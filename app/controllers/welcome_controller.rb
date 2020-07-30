@@ -41,18 +41,20 @@ class WelcomeController < ApplicationController
       		movements << ["pago", payment.id, payment.payment_date, payment.client, payment.get_real_amount]
       		@pagos_total = @pagos_total + payment.get_real_amount
       		payment.payment_details.each do |detail|
-      			case detail.way_pay.name
-      			when "DEBITO"
-      				@debito_total = @debito_total + detail.real_amount
-      			when "EFECTIVO"
-      				@efectivo_total = @efectivo_total + detail.real_amount
-      			when "AVANZAR"
-      				@avanzar_total = @avanzar_total + detail.real_amount
-      			when "CREDITO"
-      				@credito_total = @credito_total + detail.real_amount
-      			else
-      				@tarjetas_total = @tarjetas_total + detail.real_amount
-      			end
+      			if detail.real_amount != 0
+	      			case detail.way_pay.name
+	      			when "DEBITO"
+	      				@debito_total = @debito_total + detail.real_amount
+	      			when "EFECTIVO"
+	      				@efectivo_total = @efectivo_total + detail.real_amount
+	      			when "AVANZAR"
+	      				@avanzar_total = @avanzar_total + detail.real_amount
+	      			when "CREDITO"
+	      				@credito_total = @credito_total + detail.real_amount
+	      			else
+	      				@tarjetas_total = @tarjetas_total + detail.real_amount
+	      			end
+	      		end
       		end
 
     	end
