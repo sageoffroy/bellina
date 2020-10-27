@@ -55,7 +55,13 @@
   <div class="field row">
     <%= form.label :release_date, :class => "col-sm-2 col-form-label" %>
     <div class="col-sm-4">
-      <%= form.text_field :release_date, :class => "datepicker", :value=>"#{form.object.release_date.strftime("%d/%m/%Y") unless form.object.new_record?}"%>
+      <% if form.object.release_date.nil?%>
+        <%= form.text_field :release_date, :class => "datepicker", :value=>""%>
+      <% else %>
+        <%= form.text_field :release_date, :class => "datepicker", :value=>"#{form.object.release_date.strftime("%d/%m/%Y") unless form.object.new_record?}"%>
+      <% end %>
+
+
     </div>
     <%= form.label :release_country_id, :class => "col-sm-2 col-form-label" %>
     <div class="col-sm-4">
@@ -88,7 +94,7 @@
   </div>
 
   <hr>
-  
+
   <div class="field">
     <%= form.label :long_description %>
     <%= form.text_area :long_description %>
