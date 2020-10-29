@@ -33,15 +33,16 @@
 	        </thead>
 		      </tbody>
 			    <% @sale.sale_details.each do |sale_details| %>
-			      <tr>
-			      	<td><%= sale_details.count%></td>
-              <% if sale_details.footwear.article.nil? %>
-			      	    <td></td>
-              <% else %>
-                <td><%= sale_details.footwear.article%></td>
-              <% end %>
-					<td><%= sale_details.footwear.short_description%></td>
-					<td><%= number_to_currency(sale_details.real_price)%></td>
+            <tr>
+              <td><%= sale_details.count%></td>
+            <% if sale_details.footwear.nil? %>
+			        <td></td>
+              <td></td>
+            <% else %>
+              <td><%= sale_details.footwear.article%></td>
+              <td><%= sale_details.footwear.short_description%></td>
+            <% end %>
+              <td><%= number_to_currency(sale_details.real_price)%></td>
 			      </tr>
 					<% end %>
 					</tbody>
