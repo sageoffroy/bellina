@@ -57,17 +57,21 @@ class SalesController < ApplicationController
   def update
     respond_to do |format|
       @sale.sale_details.each do |sd|
-        fw = Footwear.where(id:sd.footwear_id).first
-        fw.inc_stock(sd.count)
-        fw.save
+        if !sd.footwear_id.nil?
+          fw = Footwear.where(id:sd.footwear_id).first
+          fw.inc_stock(sd.count)
+          fw.save
+        end
       end
 
 
       if @sale.update(sale_params)
         @sale.sale_details.each do |sd|
-          fw = Footwear.where(id:sd.footwear_id).first
-          fw.dec_stock(sd.count)
-          fw.save
+          if !sd.footwear_id.nil?
+            fw = Footwear.where(id:sd.footwear_id).first
+            fw.dec_stock(sd.count)
+            fw.save
+          end
         end
         format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
         format.json { render :show, status: :ok, location: @sale }
