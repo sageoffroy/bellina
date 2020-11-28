@@ -5,6 +5,10 @@ class ColorsController < ApplicationController
   # GET /colors.json
   def index
     @colors = Color.all
+    respond_to do |format|
+      format.html
+      format.json { render json: ColorDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /colors/1

@@ -8,7 +8,10 @@ class FootwearsController < ApplicationController
   # GET /footwears
   # GET /footwears.json
   def index
-    @footwears = Footwear.all
+    respond_to do |format|
+      format.html
+      format.json { render json: FootwearDatatable.new(params, view_context: view_context) }
+    end
   end
 
   # GET /footwears/1
@@ -35,8 +38,8 @@ class FootwearsController < ApplicationController
   # POST /footwears.json
   def create
     @footwear = Footwear.new(footwear_params)
-    
-      
+
+
     respond_to do |format|
       if @footwear.save
         if @footwear.sku.blank?
@@ -52,7 +55,7 @@ class FootwearsController < ApplicationController
         end
 
         @footwear.save
-        format.html { redirect_to @footwear, notice: 'Footwear was successfully created.' }
+        format.html { redirect_to new_footwear_path, notice: 'Footwear was successfully created.' }
         format.json { render :show, status: :created, location: @footwear }
       else
         format.html { render :new }
@@ -78,7 +81,7 @@ class FootwearsController < ApplicationController
     respond_to do |format|
       format.json  { render :json => {:function => "get_footwear_id", :id => id}}
     end
-    
+
   end
 
 
