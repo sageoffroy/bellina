@@ -6,7 +6,7 @@ namespace :export do
       serialized = country
         .serializable_hash
         .delete_if{|key,value| excluded_keys.include?(key)}
-      puts “User.create(#{serialized})”
+      puts "User.create(#{serialized})"
     end
   end
 end
