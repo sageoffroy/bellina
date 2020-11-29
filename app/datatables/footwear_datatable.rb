@@ -16,8 +16,8 @@ class FootwearDatatable < AjaxDatatablesRails::ActiveRecord
     @view_columns ||= {
       sku: { source: "Footwear.sku", cond: :like, searchable: true, orderable: true },
       article: { source: "Footwear.article", cond: :like, searchable: true, orderable: true },
-      trademark: { source: "Footwear.trademark", cond: :like, searchable: true, orderable: true },
-      category: { source: "Footwear.category", cond: :like, searchable: true, orderable: true },
+      trademark: { source: "Footwear.trademark", cond: :like, searchable: false, orderable: false },
+      category: { source: "Footwear.category", cond: :like, searchable: false, orderable: false },
       stock: { source: "Footwear.stock"},
     }
   end
@@ -28,8 +28,8 @@ class FootwearDatatable < AjaxDatatablesRails::ActiveRecord
         # example:
         sku: record.sku,
         article: record.article,
-        trademark: record.trademark,
-        category: record.category,
+        trademark: record.trademark.name,
+        category: record.category.name,
         stock: record.stock,
         options:  (link_to((fa_icon "eye"), record) + link_to((fa_icon "pencil"), edit_footwear_path(record)) + link_to((fa_icon "trash-o"), record, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar?' }) ),
       }
@@ -39,6 +39,7 @@ class FootwearDatatable < AjaxDatatablesRails::ActiveRecord
   def get_raw_records
     # insert query here
     Footwear.all
+    #Footwear.includes(:trademark, :category).all
   end
 
 end
