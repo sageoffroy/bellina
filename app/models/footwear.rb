@@ -1,6 +1,8 @@
 class Footwear < ApplicationRecord
   belongs_to :trademark
+
   belongs_to :category
+
   belongs_to :color
   belongs_to :release_country, optional:true
   belongs_to :size

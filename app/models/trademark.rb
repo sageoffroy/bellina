@@ -1,6 +1,7 @@
 class Trademark < ApplicationRecord
-  has_one :provider
+  belongs_to :provider
   has_many :client
+
   validates_presence_of :provider
 
   def to_s
