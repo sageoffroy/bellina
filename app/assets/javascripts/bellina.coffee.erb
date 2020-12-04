@@ -6,7 +6,7 @@ $.fn.extend {
       width: '100%',
       allowClear: false
     })
-                
+
   integrateDatepicker: (selector)->
     selector = selector || '.datepicker'
     $(@).find(selector).datepicker({
@@ -22,11 +22,11 @@ $.fn.extend {
     })
 }
 
- 
+
 
 ###
 # Number.prototype.format(n, x, s, c)
-# 
+#
 # @param integer n: length of decimal
 # @param integer x: length of whole part
 # @param mixed   s: sections delimiter
@@ -47,7 +47,7 @@ set_events = ->
     $('.footwear_cant').bind 'keyup mouseup', (e)->
       event_target = $(e.currentTarget);
       calc_value(event_target.parents('.field'))
-      
+
 
     footwear_selects = $(".footwear_select")
     footwear_selects.on 'select2:select', (e) ->
@@ -78,7 +78,7 @@ set_events = ->
       event_target = $(e.currentTarget);
       calc_amount(event_target.parents('.field'))
       return
-    
+
 
 
 calc_total = ->
@@ -102,7 +102,7 @@ calc_total = ->
           fee6 = data.fees_array[i][2]
           fee9 = data.fees_array[i][3]
           fee12 = data.fees_array[i][4]
-          
+
           if (fee3 == null)
             fee3 = '<span style="color:red;">No disponible</span>'
           else
@@ -129,15 +129,15 @@ calc_total = ->
 
 
 calc_value = (parent) ->
-  input_select = parent.find('.footwear_select') 
+  input_select = parent.find('.footwear_select')
   id = input_select.val()
   input_value = parent.find('.footwear_value')
   input_value.empty()
   input_cant = parent.find('.footwear_cant')
-  
+
   if !input_cant.val().length
     input_cant.val(1)
-  
+
   if id.length > 0
     $.ajax
         type: 'POST'
@@ -153,7 +153,7 @@ calc_amount = (parent) ->
   way_pay_id = way_pay_select.val()
 
   fee_select = parent.find('.fee_select')
-  
+
   #Habilitar cuotas si no es efectivo
   #if way_pay_id > 1
     #fee_select.prop('disabled', false)
@@ -161,9 +161,9 @@ calc_amount = (parent) ->
     #fee_select.prop('disabled', true)
     #fee_select.val(1).trigger('change.select2')
 
-  
+
   amount = parent.find('.amount_value')
-  
+
   real_amount = parent.find('.real_amount_value')
 
   amount_x_fee = parent.find('.amount_x_fee_value')
@@ -183,7 +183,7 @@ calc_amount = (parent) ->
             sum = sum + eval($(this).val())
             if(isNaN(sum))
               sum = 0;
-          
+
           $('#total').text(sum.format(2, 3, '.', ','))
   else
     real_amount.val((amount.val()*1).toFixed(2))
@@ -195,7 +195,7 @@ calc_amount = (parent) ->
         sum = 0;
     $('#total').text(sum.format(2, 3, '.', ','))
 
-  
+
 calc_debt = () ->
   client = $('#client_select')
   id = client.val()
@@ -213,8 +213,21 @@ calc_debt = () ->
 
 $(document).ready ->
   $('[data-toggle="tooltip"]').tooltip()
-  $('.datatable').dataTable()
-  
+  datatable = $('.datatable')
+  datatable.DataTable
+    'language': 'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json'
+    'bPaginate': true
+    'info': false
+    'responsive': true
+    'deferRender': true
+    'stateSave': true
+  form = $('form')
+  form.integrateSelect2()
+  form.integrateDatepicker()
+
+
+  set_events()
+
 
 
 $(document).on 'turbolinks:load', ->
@@ -226,17 +239,18 @@ $(document).on 'turbolinks:load', ->
     'info': false
     'responsive': true
     'deferRender': true
+    'stateSave': true
 
-    form = $('form')
-    form.integrateSelect2()
-    form.integrateDatepicker()
+  form = $('form')
+  form.integrateSelect2()
+  form.integrateDatepicker()
 
-  
-    set_events()
-  
+
+  set_events()
+
 $ ->
   $('[data-toggle="tooltip"]').tooltip()
-  
+
 
 
 $(document).on 'turbolinks:before-cache', ->
@@ -270,4 +284,3 @@ document.addEventListener 'scan', (sScancode, iQuatity) ->
         return
       success: (data) ->
         window.location.replace("/footwears/" + data.id);
-  

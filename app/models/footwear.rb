@@ -27,6 +27,10 @@ class Footwear < ApplicationRecord
     end
   end
 
+  def color_hex_code
+    color.hex_code
+  end
+
   def create_sku
     sku = self.sku
     calc = (((sku [1].to_i + sku[3].to_i + sku[5].to_i + sku[7].to_i + sku[9].to_i + sku[11].to_i) * 3) + (sku[0].to_i + sku[2].to_i + sku[4].to_i + sku[6].to_i + sku[8].to_i + sku[10].to_i)).digits.first
