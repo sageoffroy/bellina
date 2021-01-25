@@ -12,9 +12,13 @@
   <% end %>
 
   <div class="field row">
-    <div class="col-sm-12">
+    <div class="col-sm-10">
       <%= form.label :name, :class=>"form-simple-text" %>
       <%= form.text_field :name %>
+    </div>
+    <div class="col-sm-2">
+      <%= form.label :order, :class=>"form-simple-text" %>
+      <%= form.number_field :order %>
     </div>
     <div class="col-sm-4">
       <%= form.label :c1, :class=>"form-simple-text" %>

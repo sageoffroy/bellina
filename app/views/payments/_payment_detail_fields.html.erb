@@ -1,7 +1,12 @@
 <div class="field nested-fields row">
 	<div class="col-sm-3">
 		<%= f.label :way_pay_id %>
-		<%= f.collection_select :way_pay_id, WayPay.all, :id, :to_s, {}, {class: "select2 select-field way_pay_select"} %>
+		<%if Rails.env.production?%>
+			<%= f.collection_select :way_pay_id, WayPay.order('order::integer DESC').all, :id, :to_s, {}, {class: "select2 select-field way_pay_select"} %>
+		<%else%>
+			<%= f.collection_select :way_pay_id, WayPay.order(:order).all, :id, :to_s, {}, {class: "select2 select-field way_pay_select"} %>
+		<%end%>
+		
 	</div>
 	<div class="col-sm-2">
 		<%= f.label :amount%>
