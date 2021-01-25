@@ -10,32 +10,26 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= form.label :dni %>
     <%= form.number_field :dni %>
   </div>
-
   <div class="field">
     <%= form.label :fullname %>
     <%= form.text_field :fullname %>
   </div>
-
   <div class="field">
     <%= form.label :mail %>
     <%= form.text_field :mail %>
   </div>
-
   <div class="field">
     <%= form.label :telephone %>
     <%= form.text_field :telephone %>
   </div>
-
   <div class="field">
     <%= form.label :address %>
     <%= form.text_field :address %>
   </div>
-
   <div class="field">
     <%= form.label :amount_old%>
     <div class="input-icon">
@@ -43,17 +37,10 @@
       <i>$</i>
     </div>
   </div>
-
-
-
   <div class="field">
     <%= form.check_box :avanzar %>
     <span style="font-style: italic;font-size: 0.8rem;"> Si el cliente cuenta con créidto avanzar tílde la casilla.</span>
   </div>
-
-
-
-
   <div class="actions">
     <%= link_to 'Volver', :back, class: "btn btn-primary" %>
     <%= form.submit %>

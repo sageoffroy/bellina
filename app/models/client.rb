@@ -12,6 +12,16 @@ class Client < ApplicationRecord
 	end
 
 
+	def is_avanzar?
+		if avanzar
+			true
+		else
+			false
+		end
+	end
+
+
+
 	def get_debt
 		amount = 0
 
