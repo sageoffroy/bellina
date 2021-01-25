@@ -105,6 +105,6 @@ class WayPaysController < ApplicationController
     end
 
     def way_pay_params
-      params.require(:way_pay).permit(:name, :c1, :c2, :c3, :c4, :c5, :c6, :c7, :c8, :c9, :c10, :c11, :c12, :c13, :c14, :c15, :c16, :c17, :c18)
+      params.require(:way_pay).permit(:name, :order, :c1, :c2, :c3, :c4, :c5, :c6, :c7, :c8, :c9, :c10, :c11, :c12, :c13, :c14, :c15, :c16, :c17, :c18)
     end
 end
