@@ -31,8 +31,7 @@ class WelcomeController < ApplicationController
 
 		@ventas_total = 0
   	sales_of_day.each do |sale|
-			byebug
-  		@ventas_total = @ventas_total + sale.get_amount
+			@ventas_total = @ventas_total + sale.get_amount
 			if sale.client.is_avanzar?
 				@avanzar_total = @avanzar_total + sale.get_amount
 			end
