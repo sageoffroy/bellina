@@ -61,7 +61,7 @@ class WelcomeController < ApplicationController
 
   	end
 
-		@credito_total = @ventas_total - @avanzar_total
+		@credito_total = @ventas_total - @avanzar_total - @pagos_total
 
   	@movements = movements
 
