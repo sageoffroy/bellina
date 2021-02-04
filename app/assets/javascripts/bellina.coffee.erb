@@ -53,8 +53,7 @@ $(document).ready ->
   form.integrateDatepicker()
 
 
-  set_events()
-
+  
 
 
 $(document).on 'turbolinks:load', ->
@@ -73,8 +72,7 @@ $(document).on 'turbolinks:load', ->
   form.integrateDatepicker()
 
 
-  set_events()
-
+  
 $ ->
   $('[data-toggle="tooltip"]').tooltip()
 
@@ -93,7 +91,7 @@ $(document).on 'turbolinks:load', ->
 
 $(document).on 'cocoon:after-insert', (e) ->
   $('.select2').select2({theme: "bootstrap",width: '100%'})
-  set_events()
+  
 
 
 $(document).on 'cocoon:after-remove', (e) ->

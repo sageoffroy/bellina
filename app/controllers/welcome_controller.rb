@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
 
 		day = params[:day]
 		month = params[:month]
-	  year = params[:year]
+	  	year = params[:year]
 
 
 
@@ -17,25 +17,25 @@ class WelcomeController < ApplicationController
     else
     	date_table = Date.new(year.to_i, month.to_i, day.to_i)
     end
-		payments_of_day = []
-		sales_of_day = []
-		@movements = []
-		movements = []
+	payments_of_day = []
+	sales_of_day = []
+	@movements = []
+	movements = []
 
-		@credito_total = 0
-  	@avanzar_total = 0
+	@credito_total = 0
+		@avanzar_total = 0
 
 
-		payments_of_day = Payment.where(payment_date: date_table)
-		sales_of_day = Sale.where(date_sale: date_table)
+	payments_of_day = Payment.where(payment_date: date_table)
+	sales_of_day = Sale.where(date_sale: date_table)
 
-		@ventas_total = 0
-  	sales_of_day.each do |sale|
-			@ventas_total = @ventas_total + sale.get_amount
-			if sale.client.is_avanzar?
-				@avanzar_total = @avanzar_total + sale.get_amount
-			end
-  		movements << ["venta", sale.id, sale.date_sale, sale.client, sale.get_amount]
+	@ventas_total = 0
+	sales_of_day.each do |sale|
+	@ventas_total = @ventas_total + sale.get_amount
+	if sale.client.is_avanzar?
+		@avanzar_total = @avanzar_total + sale.get_amount
+	end
+	movements << ["venta", sale.id, sale.date_sale, sale.client, sale.get_amount]
   	end
 
   	@pagos_total = 0
@@ -63,7 +63,7 @@ class WelcomeController < ApplicationController
 
 		@credito_total = @ventas_total - @avanzar_total - @pagos_total
 
-  	@movements = movements
+  		@movements = movements
 
 		sales_of_months = []
 		(1..12).each do |i|
