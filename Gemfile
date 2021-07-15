@@ -104,4 +104,5 @@ gem 'chartjs-ror'
 gem 'chunky_png'
 
 gem 'wicked_pdf'
+
 #gem 'wkhtmltopdf-binary'

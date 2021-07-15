@@ -12,7 +12,7 @@
   <div class="card card-register mx-auto mt-5">
     <div class="card-header">
     	<div class="row">
-    		<div class="col-md-6">Venta Nº: <%= @sale.id %></div>	
+    		<div class="col-md-6">Venta Nº: <%= @sale.id %></div>
     		<div clas="col-md-6" style="text-align: right;width: 50%; padding-right:15px">Estado: <%= @sale.state%></div>
     	</div>
 	 	</div>
@@ -21,7 +21,7 @@
 		 	<div class="col-md-6" style="text-align: right;"><strong>Cliente: </strong><a href="/clients/<%= @sale.client.id%>"><%= @sale.client %></a></div>
 		 	<div class="col-md-12" style="margin-top: 25px;"></div>
 		 	<div class="col-md-12">
-		 		
+
 		 		<table class="table">
 		 			<thead>
 	          <tr>
@@ -33,16 +33,21 @@
 	        </thead>
 		      </tbody>
 			    <% @sale.sale_details.each do |sale_details| %>
-			      <tr>
-			      	<td><%= sale_details.count%></td>
-			      	<td><%= sale_details.footwear.article%></td>
-					<td><%= sale_details.footwear.short_description%></td>
-					<td><%= number_to_currency(sale_details.real_price)%></td>
+            <tr>
+              <td><%= sale_details.count%></td>
+            <% if sale_details.footwear.nil? %>
+			        <td></td>
+              <td></td>
+            <% else %>
+              <td><%= sale_details.footwear.article%></td>
+              <td><%= sale_details.footwear.short_description%></td>
+            <% end %>
+              <td><%= number_to_currency(sale_details.real_price)%></td>
 			      </tr>
 					<% end %>
 					</tbody>
-				</table>  
-				
+				</table>
+
   		</div>
 
 			<div class="col-sm-12" style="text-align: right; font-weight: 600;">

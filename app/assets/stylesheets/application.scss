@@ -283,10 +283,10 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  
+
   @extend .btn;
   @extend .btn-primary;
-  
+
 }
 
 button:not(:disabled),
@@ -312,7 +312,7 @@ button::-moz-focus-inner,
 }
 
 .float_button:hover {
-  
+
 }
 
 input[type="radio"],
@@ -346,10 +346,10 @@ input[type="password"]
 }
 
 .venta:hover, .pago:hover {
-  cursor: pointer; 
+  cursor: pointer;
 }
 
- 
+
 
 .active-true {
   color:green;
@@ -2114,7 +2114,7 @@ pre code {
 
 .field {
   @extend .form-group;
-  
+
 }
 
 .form-control {
@@ -2138,7 +2138,7 @@ pre code {
 
 .form-simple-text {
   margin-bottom: 0rem;
-  margin-top: 0.5rem; 
+  margin-top: 0.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4546,7 +4546,7 @@ input[type="button"].btn-block {
   justify-content: space-between;
   padding: 0rem;
   height: 56px;
-  
+
 }
 
 .navbar > .container,
@@ -11102,6 +11102,3 @@ a .fa {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Opera and Firefox */
 }
-
-
-

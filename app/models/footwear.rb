@@ -1,6 +1,8 @@
 class Footwear < ApplicationRecord
   belongs_to :trademark
+
   belongs_to :category
+
   belongs_to :color
   belongs_to :release_country, optional:true
   belongs_to :size
@@ -16,13 +18,17 @@ class Footwear < ApplicationRecord
 
 
   has_one_attached :avatar
-  
+
   def get_select_description
     if article.nil? or article.blank? 
       "(" + self.sku + ") " + self.trademark.to_s + " " + self.color.to_s + " " + self.size.to_s
     else
       "(" + self.sku + ") " + self.article + " " + self.color.to_s + " " + self.size.to_s
     end
+  end
+
+  def color_hex_code
+    color.hex_code
   end
 
   def create_sku
@@ -37,19 +43,19 @@ class Footwear < ApplicationRecord
   	self.sku = '779999' + (sprintf '%06d', id) + verification_value.to_s
   end
 
-  
+
   def get_barcode
     if self.sku[0] == 7
       bar_code = Barby::PngOutputter.new(Barby::EAN13.new(self.sku[0..11]))
     else
       bar_code = Barby::PngOutputter.new(Barby::Code39.new(self.sku[0..14],true))
     end
-    bar_code.margin = 1 
+    bar_code.margin = 1
     bar_code.height = 60
     bar_code.xdim = 1
-    
+
     File.open('app/assets/images/barcode.png', 'wb'){|f| f.write bar_code.to_png }
-    
+
   end
 
 
@@ -85,6 +91,3 @@ class Footwear < ApplicationRecord
   end
 
 end
-
-
-
