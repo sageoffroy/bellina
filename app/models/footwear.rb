@@ -19,9 +19,9 @@ class Footwear < ApplicationRecord
   
   def get_select_description
     if article.nil? or article.blank? 
-      "(" + self.sku + ") " + self.category.to_s + " " + self.trademark.to_s
+      "(" + self.sku + ") " + self.trademark.to_s + " " + self.color.to_s + " " + self.size.to_s
     else
-      "(" + self.sku + ") " + self.category.to_s + " " + self.article
+      "(" + self.sku + ") " + self.article + " " + self.color.to_s + " " + self.size.to_s
     end
   end
 
